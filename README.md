@@ -148,5 +148,3 @@ O relatório em formato PowerPoint deve incluir:
 6. **Conclusão** - dificuldades encontradas e ganhos obtidos
 
 ---
-
-**Nota:** Não gere código para este trabalho (conforme instruções do professor)
