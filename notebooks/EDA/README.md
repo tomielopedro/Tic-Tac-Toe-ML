@@ -1,94 +1,74 @@
-# Análise Exploratória: Tic-Tac-Toe Endgame Dataset
+# Análise Exploratória e Data Augmentation: Tic-Tac-Toe Endgame Dataset
 
-## Validação Inicial
+## Visão Geral
+Este projeto documenta a análise exploratória e a engenharia de dados (Data Augmentation) aplicadas a um dataset de configurações de fim de partida do Jogo da Velha (Tic-Tac-Toe). O objetivo principal foi adequar os dados aos requisitos de classificação em 4 classes distintas, gerando estados intermediários e expandindo casos sub-representados.
 
-Verificação de jogos duplicados realizada através de: df.duplicated(subset=[f'pos_{i}' for i in range(1,10)]).any()
-Resultado: Não há jogos duplicados no dataset. Todas as 958 configurações são únicas.
+## 1. Análise Exploratória e Validação Inicial
 
-## Achados da Análise
+### Verificação de Duplicatas
+Foi realizada uma verificação de jogos duplicados considerando as 9 posições do tabuleiro (`pos_1` a `pos_9`).
+- **Resultado:** Não foram encontradas duplicatas. Todas as 958 configurações originais são únicas.
 
-O dataset contém 958 configurações legais de fim de partida do jogo da velha. A análise exploratória identificou três classes distintas de resultado:
+### Achados da Análise (Dataset Original)
+O dataset original continha 958 configurações legais de **fim de partida**. A análise identificou três classes distintas:
+1. **X venceu:** 626 amostras (65%)
+2. **O venceu:** 316 amostras (33%)
+3. **Empate:** 16 amostras (2%)
 
-1. X venceu: 626 amostras (65%)
-2. O venceu: 316 amostras (33%)
-3. Empate: 16 amostras (2%)
+*Descoberta importante:* A classe original "negative" do dataset era binária, agrupando tanto vitórias de O quanto empates. Essa classificação refletia apenas "X não venceu", falhando em diferenciar uma derrota de um empate.
 
-Descoberta importante: a classe original "negative" do dataset era binária, agrupando tanto vitórias de O quanto empates. Essa classificação refletia apenas "X não venceu", não diferenciando entre derrota e empate.
+### Estrutura dos Dados e Padrões
+- O dataset contém 9 posições de tabuleiro onde cada célula pode ter: `'x'` (marca de X), `'o'` (marca de O) ou `'b'` (vazia).
+- A validação das classes foi feita verificando as 8 combinações vencedoras (3 linhas, 3 colunas, 2 diagonais).
+- **Padrões:** X aparece em maior quantidade em todas as posições, reflexo de ser o primeiro a jogar. A posição central (`pos_5`) mostrou-se estrategicamente vital: quando dominada por X, há alta correlação com vitória; quando dominada por O, há correlação negativa com a vitória de X.
 
-## Estrutura dos Dados
+---
 
-O dataset contém 9 posições de tabuleiro (pos_1 a pos_9) onde cada célula pode ter um dos três valores:
-- 'x': posição com marca de X
-- 'o': posição com marca de O
-- 'b': posição vazia
+## 2. O Problema Identificado
 
-A validação das classes foi feita verificando as 8 combinações vencedoras do jogo (3 linhas, 3 colunas, 2 diagonais).
+O requisito do trabalho exigia a classificação em **4 classes**, mas o dataset continha apenas 3. Faltava a classe **"Tem jogo"**, que representa estados intermediários onde ainda há posições vazias e nenhum jogador venceu. 
 
-## Padrões Identificados
+Essa classe não existia porque o conjunto de dados original focava estritamente em *endgames* (jogos finalizados). Além disso, havia uma sub-representação matemática da classe de Empate (contendo apenas 16 das 32 possibilidades reais de empate do jogo da velha).
 
-A análise de frequência mostrou que X aparece em maior quantidade em todas as posições, reflexo de X jogar sempre primeiro em um jogo real. Correlações identificadas revelaram que a posição central (pos_5) é estrategicamente importante: quando X ocupa pos_5, há maior correlação com vitória; quando O ocupa, há correlação negativa com vitória de X.
+---
 
-O dataset apresenta um leve desbalanceamento, com prevalência da classe positiva (65% vs 35%).
+## 3. Metodologia de Solução (Data Augmentation)
 
-## Problema Identificado
+Para resolver as deficiências do dataset, foi implementado um pipeline em Python (Pandas/NumPy) focado em Geração Aleatória de Estados Intermediários com Validação Estrita. O processo foi dividido nas seguintes etapas:
 
-O requisito do trabalho exige classificação em 4 classes, mas o dataset atual contém apenas 3 classes resultantes. Falta a classe "Tem jogo", que representaria estados intermediários do jogo onde ainda há posições vazias e nenhum jogador venceu ainda.
+### Passo 1: Padronização Numérica
+Os dados categóricos foram convertidos para valores numéricos para facilitar o processamento matemático:
+- `'x'` $\rightarrow$ `1`
+- `'o'` $\rightarrow$ `-1`
+- `'b'` $\rightarrow$ `0`
 
-Essa classe não existe no dataset porque o conjunto contém apenas "endgame" (fim de jogo) - todas as 958 configurações representam estados finais onde o jogo terminou.
+### Passo 2: Expansão dos Casos de Empate
+Para obter os 32 casos totais de empate possíveis no jogo da velha, realizou-se o espelhamento matemático das 16 configurações existentes (multiplicando o tabuleiro padronizado por `-1`, ou seja, onde era X virou O, e vice-versa). 
 
-## Estratégia Definida:
+### Passo 3: Geração de Estados Intermediários ("Tem jogo")
+A partir das configurações de fim de jogo, novos estados foram gerados através de engenharia reversa:
+1. Identificação das peças no tabuleiro original.
+2. Remoção aleatória de 1 a 3 peças.
+3. **Validação Estrita:** Garantia de que o novo estado gerado não contém uma vitória configurada.
+4. **Validação de Turno:** Verificação matemática (`0 <= sum(tabuleiro) <= 1`) para garantir que o estado gerado obedece à regra de que "X" sempre joga primeiro.
+5. Classificação como "Tem jogo".
+6. O processo foi repetido e iterado até atingir uma volumetria satisfatória, seguido por uma etapa de eliminação de duplicatas globais.
 
-Após avaliar 4 abordagens possíveis, foi escolhida a Opção de: Geração Aleatória de Estados Intermediários com Validação.
+---
 
-Essa estratégia opera da seguinte forma:
-- Para cada configuração de fim de jogo
-- Remove-se aleatoriamente 1-3 posições preenchidas (deixando como vazio)
-- Valida-se que a nova configuração não contém vitória
-- Valida-se que tem pelo menos uma posição vazia
-- Classifica-se como "Tem jogo"
-- O processo é repetido N vezes por amostra original
+## 4. Resultados: Distribuição Final do Dataset
 
-## Próximos Passos
+Após a execução completa do pipeline de Data Augmentation, o dataset foi expandido com sucesso para atender aos requisitos das 4 classes de forma validada. A nova distribuição das classes ficou da seguinte forma:
 
-### 1. Padronização do Dataset
+| Classe | Quantidade de Amostras | Observação |
+| :--- | :--- | :--- |
+| **Tem jogo** | 626 | *Estados intermediários gerados e validados* |
+| **X venceu** | 626 | *Mantido do dataset original* |
+| **O venceu** | 316 | *Mantido do dataset original* |
+| **Empate** | 32 | *Expandido (16 originais + 16 espelhados)* |
+| **TOTAL** | **1600** | *Dataset finalizado pronto para treinamento* |
 
-O dataset deve ser padronizado através de codificação numérica:
-- 'x' transformar em 1
-- 'o' transformar em -1
-- 'b' transformar em 0
-
-Esta transformação é necessária para que os algoritmos de classificação possam processar os dados adequadamente.
-
-### 2. Expansão dos Casos de Empate
-
-Atualmente o dataset contém apenas 16 casos de empate das 32 possibilidades de empate que existem no jogo da velha. Para obter os 32 casos, deve-se realizar espelhamento das configurações de empate existentes, transformando:
-- x em o
-- o em x
-
-Mantendo a classe como "Empate". Isso resulta em mais 16 configurações de empate, totalizando 32 casos únicos de empate.
-
-### 3. Implementar função gerar_estados_intermediarios(df, n_geracao_por_linha=3, seed=42)
-   - Identificar posições preenchidas para cada linha
-   - Remover aleatoriamente 1-3 posições
-   - Validar resultado com função classificar()
-   - Adicionar ao novo dataframe com classe "Tem jogo"
-
-### 4. Parametrizar a geração
-   - n_geracao_por_linha: número de variações por amostra (recomendado 3-5)
-   - seed: manter em 42 para reprodutibilidade
-   - min_remove/max_remove: manter em 1-3 para evitar estados muito vazios
-
-### 5. Validar estados gerados
-   - Verificar que nenhum tem vitória detectada
-   - Verificar que todos têm posição vazia
-   - Verificar ausência de duplicatas
-   - Confirmar distribuição das 4 classes
-
-### 6. Combinar as 4 classes em um único dataframe
-   - Concatenar X venceu, O venceu, Empate e Tem jogo
-   - Salvar dataset expandido
-
-### 7. Análise comparativa das 4 classes
-   - Distribuição
-   - Padrões estratégicos por classe
-   - Visualizações
+## 5. Próximos Passos
+- Realizar análise comparativa detalhada (EDA) focada nas 4 classes.
+- Extrair visualizações da nova distribuição.
+- Iniciar a divisão dos dados (Train/Test Split) e o treinamento dos modelos de Machine Learning utilizando o novo dataset padronizado numericamente.
