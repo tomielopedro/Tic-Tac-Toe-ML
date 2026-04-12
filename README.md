@@ -1,94 +1,150 @@
-# Análise Exploratória: Tic-Tac-Toe Endgame Dataset
+# T1 – Tic Tac Toe com ML
 
-## Validação Inicial
+**Disciplina:** PUCRS – Inteligência Artificial  
+**Professor:** Silvia Moraes  
+**Código de identificação:** t32
 
-Verificação de jogos duplicados realizada através de: df.duplicated(subset=[f'pos_{i}' for i in range(1,10)]).any()
-Resultado: Não há jogos duplicados no dataset. Todas as 958 configurações são únicas.
+---
 
-## Achados da Análise
+## Enunciado
 
-O dataset contém 958 configurações legais de fim de partida do jogo da velha. A análise exploratória identificou três classes distintas de resultado:
+Neste primeiro trabalho prático da disciplina, você vai construir um **sistema de IA para o jogo da velha** em um tabuleiro clássico 3x3. O objetivo da IA **não é ser um dos players**, mas sim **verificar o estado de jogo**. A seguir serão descritas as etapas do trabalho.
 
-1. X venceu: 626 amostras (65%)
-2. O venceu: 316 amostras (33%)
-3. Empate: 16 amostras (2%)
+---
 
-Descoberta importante: a classe original "negative" do dataset era binária, agrupando tanto vitórias de O quanto empates. Essa classificação refletia apenas "X não venceu", não diferenciando entre derrota e empate.
+## 1. Objetivo
 
-## Estrutura dos Dados
+A IA que você implementará deve receber como entrada o estado atual de um tabuleiro do jogo da velha e classificar esse estado em:
 
-O dataset contém 9 posições de tabuleiro (pos_1 a pos_9) onde cada célula pode ter um dos três valores:
-- 'x': posição com marca de X
-- 'o': posição com marca de O
-- 'b': posição vazia
+- **Tem jogo**
+- **Jogador X venceu**
+- **Jogador O venceu**
+- **Empate**
 
-A validação das classes foi feita verificando as 8 combinações vencedoras do jogo (3 linhas, 3 colunas, 2 diagonais).
+---
 
-## Padrões Identificados
+## 2. Dataset
 
-A análise de frequência mostrou que X aparece em maior quantidade em todas as posições, reflexo de X jogar sempre primeiro em um jogo real. Correlações identificadas revelaram que a posição central (pos_5) é estrategicamente importante: quando X ocupa pos_5, há maior correlação com vitória; quando O ocupa, há correlação negativa com vitória de X.
+Acesse o link [https://archive.ics.uci.edu/dataset/101/tic+tac+toe+endgame](https://archive.ics.uci.edu/dataset/101/tic+tac+toe+endgame) e obtenha um dataset que possui instâncias do tabuleiro do jogo da velha.
 
-O dataset apresenta um leve desbalanceamento, com prevalência da classe positiva (65% vs 35%).
+### Requisitos do Dataset
 
-## Problema Identificado
+- Analise o dataset e verifique se ele atende às necessidades do problema apresentado
+- No caso de não atender plenamente, realize as adequações que julgar pertinentes (limpeza, transformação, etc.)
+- **Registre** os eventuais problemas que você encontrou e **todos os passos** que você executou (justificando esses passos) para construir o dataset que será usado para construir a solução de IA
+- Procure gerar um **dataset balanceado**
+- De preferência, **não use todas as instâncias**, apenas as mais representativas
+- Você pode iniciar com **200 amostras de cada classe**, quando possível
+- **As variáveis devem ter em seus nomes o código 32**
 
-O requisito do trabalho exige classificação em 4 classes, mas o dataset atual contém apenas 3 classes resultantes. Falta a classe "Tem jogo", que representaria estados intermediários do jogo onde ainda há posições vazias e nenhum jogador venceu ainda.
+---
 
-Essa classe não existe no dataset porque o conjunto contém apenas "endgame" (fim de jogo) - todas as 958 configurações representam estados finais onde o jogo terminou.
+## 3. Divisão do Dataset
 
-## Estratégia Definida:
+Divida fisicamente o conjunto de dados em **treino, validação e teste**. Precisam ser os mesmos conjuntos nos experimentos, pois testaremos mais de um algoritmo de IA.
 
-Após avaliar 4 abordagens possíveis, foi escolhida a Opção de: Geração Aleatória de Estados Intermediários com Validação.
+### Procedimento
 
-Essa estratégia opera da seguinte forma:
-- Para cada configuração de fim de jogo
-- Remove-se aleatoriamente 1-3 posições preenchidas (deixando como vazio)
-- Valida-se que a nova configuração não contém vitória
-- Valida-se que tem pelo menos uma posição vazia
-- Classifica-se como "Tem jogo"
-- O processo é repetido N vezes por amostra original
+- O conjunto de **validação** deve ser usado para definir os parâmetros mais adequados de cada algoritmo
+- A partir dessas definições, use o conjunto de **teste** para avaliar de fato o desempenho da IA
+- **Alternativa:** Divida o conjunto em treino e teste, e aplique **validação cruzada** no conjunto de treino
+- O melhor modelo encontrado deve ter seu desempenho avaliado a partir do conjunto de teste
+- **As variáveis devem ter em seus nomes o código 32**
 
-## Próximos Passos
+---
 
-### 1. Padronização do Dataset
+## 4. Solução de IA
 
-O dataset deve ser padronizado através de codificação numérica:
-- 'x' transformar em 1
-- 'o' transformar em -1
-- 'b' transformar em 0
+Construa a sua solução testando **ao menos 5 algoritmos classificadores**. Dentre os 5, deve ter:
 
-Esta transformação é necessária para que os algoritmos de classificação possam processar os dados adequadamente.
+- **k-NN** (obrigatório)
+- **MLP** (obrigatório)
+- **Árvores de decisão** (obrigatório)
+- **Dois outros algoritmos** de livre escolha
 
-### 2. Expansão dos Casos de Empate
+### Requisitos
 
-Atualmente o dataset contém apenas 16 casos de empate das 32 possibilidades de empate que existem no jogo da velha. Para obter os 32 casos, deve-se realizar espelhamento das configurações de empate existentes, transformando:
-- x em o
-- o em x
+- Inclua em seu relatório uma **pequena explicação** de como funcionam os dois algoritmos de livre escolha
+- **Todas as decisões referentes a parâmetros** desses algoritmos devem ser apresentadas e justificadas no seu relatório
+- No caso da **MLP**, não esqueça de informar a **topologia usada**
+- **Meça os seus resultados** utilizando:
+  - Acurácia
+  - Precision
+  - Recall
+  - F-measure
+- **Busque bons resultados** e **evite overfitting** (procure as melhores configurações e parâmetros para os algoritmos)
+- **Compare os resultados** e **escolha o melhor algoritmo** para o problema
+- Mostre a sua comparação usando **tabelas e gráficos**
+- **Justifique sua escolha** no texto do seu relatório
+- **As variáveis devem ter em seus nomes o código 32**
 
-Mantendo a classe como "Empate". Isso resulta em mais 16 configurações de empate, totalizando 32 casos únicos de empate.
+---
 
-### 3. Implementar função gerar_estados_intermediarios(df, n_geracao_por_linha=3, seed=42)
-   - Identificar posições preenchidas para cada linha
-   - Remover aleatoriamente 1-3 posições
-   - Validar resultado com função classificar()
-   - Adicionar ao novo dataframe com classe "Tem jogo"
+## 5. Front End
 
-### 4. Parametrizar a geração
-   - n_geracao_por_linha: número de variações por amostra (recomendado 3-5)
-   - seed: manter em 42 para reprodutibilidade
-   - min_remove/max_remove: manter em 1-3 para evitar estados muito vazios
+Construa um **front end mínimo** (não precisa ser gráfico) para o jogo da velha, onde **dois players possam interagir**. Um player deve ser **humano** e o outro a **máquina jogando de forma aleatória**.
 
-### 5. Validar estados gerados
-   - Verificar que nenhum tem vitória detectada
-   - Verificar que todos têm posição vazia
-   - Verificar ausência de duplicatas
-   - Confirmar distribuição das 4 classes
+### Funcionalidades
 
-### 6. Combinar as 4 classes em um único dataframe
-   - Concatenar X venceu, O venceu, Empate e Tem jogo
-   - Salvar dataset expandido
+- A cada turno (a cada jogada de usuário/computador), a **solução de IA escolhida** deve indicar:
+  - Se um dos jogadores ganhou
+  - Se houve empate
+  - Se ainda há jogo
+- A partir da **saída do seu algoritmo de IA**, seu front end deve:
+  - Dar ou não seguimento ao jogo
+  - Fornecer os feedbacks necessários (mensagens ao usuário sobre o estado do jogo)
+- **Contabilize acertos e erros** da solução durante a interação
+- **Meça a acurácia** da solução durante as interações com os usuários
+- **Registre** isso no seu relatório
+- **Procedimento de teste:** 
+  - Encerre o jogo quando a IA não detectar o fim de jogo
+  - Continue o jogo quando a IA detectar o fim do jogo incorretamente
+- **As variáveis devem ter em seus nomes o código 32**
 
-### 7. Análise comparativa das 4 classes
-   - Distribuição
-   - Padrões estratégicos por classe
-   - Visualizações
+---
+
+## Definições e Critérios
+
+- Os **grupos podem ser de até 5 alunos**
+- **Distribua as atividades** entre os integrantes do grupo de forma que todos trabalhem (1 algoritmo de IA por aluno, ao menos)
+- **Se inscreva no moodle**
+- Alunos que não formarem grupo terão grupo definido pelo professor
+- **Data de entrega e apresentação:** no cronograma disponível no moodle
+- Na data da **apresentação**, **todos os integrantes do grupo devem estar presentes**
+- A **avaliação não é apenas sobre o que foi entregue**, mas também sobre o **domínio/conhecimento demonstrado** pelos integrantes durante a apresentação
+- O **desconhecimento ou falta de domínio** sobre o código e das funcionalidades implementadas pode **zerar ou reduzir consideravelmente a nota**
+
+---
+
+## Pontuação
+
+| Item | Pontos |
+|------|--------|
+| **Dataset** (documentado) | 1,0 |
+| **Soluções de IA e documentação** (1,0 por algoritmo, configuração, testes e análise de resultados) | 5,0 |
+| **Front End** (com mensagens da IA e score) | 1,0 |
+| **Relatório** (formato ppt): introdução, dataset e suas modificações, desenvolvimento das soluções, decisões e justificativas, comparações, resultados obtidos e conclusão | 2,0 |
+| **TOTAL** | **10,0** |
+
+---
+
+## Observações Importantes
+
+- ⚠️ **Código incorreto**, ausência na apresentação (não justificada), **falta de domínio** durante apresentação e **não cumprimento do enunciado** provocam **decréscimo na nota**
+- ⚠️ **Cópia de trabalhos de colegas zeram o trabalho**
+- ✅ **Indique as ferramentas de IA** que você usou, especificando **onde foram usadas**
+
+---
+
+## Relatório - Conteúdo Esperado (PPT)
+
+O relatório em formato PowerPoint deve incluir:
+
+1. **Introdução** - contexto e objetivo do trabalho
+2. **Dataset** - número de amostras por classe e modificações realizadas
+3. **Desenvolvimento das Soluções** - algoritmos, parametrização e justificativas
+4. **Comparações** - tabelas e gráficos comparativos
+5. **Resultados** - obtidos durante treinamento/validação/teste e interação via Front End
+6. **Conclusão** - dificuldades encontradas e ganhos obtidos
+
+---
