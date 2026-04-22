@@ -1696,3 +1696,15 @@ pos_1,pos_2,pos_3,pos_4,pos_5,pos_6,pos_7,pos_8,pos_9,classe
 0,1,1,-1,1,-1,0,-1,1,Tem jogo,MLP,X venceu,2026-04-22T11:14:36.638198
 0,1,1,-1,1,-1,-1,-1,1,Tem jogo,MLP,O venceu,2026-04-22T11:14:36.638989
 1,-1,-1,-1,-1,1,1,1,0,Tem jogo,MLP,Empate,2026-04-22T11:14:36.775022
+1,1,-1,-1,0,1,1,-1,-1,Tem jogo,GradientBoost,Empate,2026-04-22T15:03:29.123229
+0,-1,1,1,1,-1,-1,1,0,Tem jogo,GradientBoost,Empate,2026-04-22T15:03:55.462590
+-1,-1,1,1,1,-1,-1,1,0,Tem jogo,GradientBoost,Empate,2026-04-22T15:03:55.475616
+-1,1,1,1,-1,-1,-1,1,0,Tem jogo,GradientBoost,Empate,2026-04-22T15:04:02.334923
+-1,1,-1,-1,1,1,1,-1,1,Empate,GradientBoost,Tem jogo,2026-04-22T15:04:08.570507
+1,-1,1,1,-1,-1,-1,0,1,Tem jogo,GradientBoost,Empate,2026-04-22T15:04:28.415699
+-1,-1,0,-1,1,1,1,0,1,Tem jogo,GradientBoost,X venceu,2026-04-22T15:04:43.846284
+-1,-1,0,-1,1,1,1,-1,1,Tem jogo,GradientBoost,X venceu,2026-04-22T15:04:43.857014
+0,-1,1,-1,1,-1,-1,1,1,Tem jogo,GradientBoost,Empate,2026-04-22T15:04:46.146098
+-1,1,1,1,0,-1,-1,-1,1,Tem jogo,GradientBoost,Empate,2026-04-22T15:05:12.091918
+0,1,-1,-1,-1,1,1,1,-1,Tem jogo,GradientBoost,Empate,2026-04-22T15:05:18.773529
+-1,-1,1,1,1,-1,-1,1,0,Tem jogo,GradientBoost,Empate,2026-04-22T15:05:21.060920

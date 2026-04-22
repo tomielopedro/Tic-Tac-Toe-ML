@@ -53,7 +53,6 @@ Acesse o link [https://archive.ics.uci.edu/dataset/101/tic+tac+toe+endgame](http
 - Procure gerar um **dataset balanceado**
 - De preferência, **não use todas as instâncias**, apenas as mais representativas
 - Você pode iniciar com **200 amostras de cada classe**, quando possível
-- **As variáveis devem ter em seus nomes o código 32**
 
 ---
 
@@ -67,7 +66,6 @@ Divida fisicamente o conjunto de dados em **treino, validação e teste**. Preci
 - A partir dessas definições, use o conjunto de **teste** para avaliar de fato o desempenho da IA
 - **Alternativa:** Divida o conjunto em treino e teste, e aplique **validação cruzada** no conjunto de treino
 - O melhor modelo encontrado deve ter seu desempenho avaliado a partir do conjunto de teste
-- **As variáveis devem ter em seus nomes o código 32**
 
 ---
 
@@ -94,7 +92,6 @@ Construa a sua solução testando **ao menos 5 algoritmos classificadores**. Den
 - **Compare os resultados** e **escolha o melhor algoritmo** para o problema
 - Mostre a sua comparação usando **tabelas e gráficos**
 - **Justifique sua escolha** no texto do seu relatório
-- **As variáveis devem ter em seus nomes o código 32**
 
 ---
 
@@ -117,7 +114,6 @@ Construa um **front end mínimo** (não precisa ser gráfico) para o jogo da vel
 - **Procedimento de teste:**
   - Encerre o jogo quando a IA não detectar o fim de jogo
   - Continue o jogo quando a IA detectar o fim do jogo incorretamente
-- **As variáveis devem ter em seus nomes o código 32**
 
 ---
 
