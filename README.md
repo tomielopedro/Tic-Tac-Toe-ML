@@ -177,7 +177,9 @@ A melhor configuração foi `C=100`, `kernel='rbf'`, `gamma='scale'`. O `C=100` 
 
 XGBoost é uma implementação otimizada de gradient boosting sobre árvores. Diferente do bagging, o boosting treina árvores *sequencialmente*: cada nova árvore foca nos exemplos que as anteriores erraram. O modelo soma essas correções progressivas com uma taxa de aprendizado controlada.
 
-A configuração adotada foi `n_estimators=200`, `learning_rate=0.1`, `max_depth=4`, `eval_metric='mlogloss'`. Foi habilitado `early_stopping_rounds=20` usando o conjunto de validação como sinal: o treinamento para automaticamente se a perda na validação não melhorar por 20 rodadas consecutivas. Esse mecanismo dispensa a necessidade de buscar manualmente o melhor `n_estimators` e age como regularização contra overfitting.
+A configuração inicial adotada foi `n_estimators=200`, `learning_rate=0.1`, `max_depth=4`, `eval_metric='mlogloss'`. Foi habilitado `early_stopping_rounds=20` usando o conjunto de validação como sinal: o treinamento para automaticamente se a perda na validação não melhorar por 20 rodadas consecutivas. Esse mecanismo dispensa a necessidade de buscar manualmente o melhor `n_estimators` e age como regularização contra overfitting.
+
+Após algumas iterações, foram encontrados valores ideais de `n_estimators=15` e `learning_rate=1`, que entregam melhor ganho de acuracia por iteração e maior acurácia máxima. 
 
 ---
 
