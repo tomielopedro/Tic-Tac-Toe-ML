@@ -1,0 +1,170 @@
+<svg viewBox="0 0 760 620" xmlns="http://www.w3.org/2000/svg" font-family="system-ui, -apple-system, 'Segoe UI', sans-serif">
+  <defs>
+    <marker id="arr" viewBox="0 0 10 10" refX="9" refY="5" markerWidth="7" markerHeight="7" orient="auto">
+      <path d="M0,0 L10,5 L0,10 z" fill="#6e7781"/>
+    </marker>
+    <style>
+      .cell { fill: #ffffff; stroke: #d0d7de; stroke-width: 1.5; }
+      .removed { fill: #fff8c5; stroke: #d4a72c; stroke-width: 1.8; stroke-dasharray: 4 3; }
+      .xm { stroke: #1f6feb; stroke-width: 4; stroke-linecap: round; }
+      .om { stroke: #cf222e; stroke-width: 3.5; fill: none; }
+      .winline { stroke: #cf222e; stroke-width: 5; stroke-linecap: round; opacity: 0.55; }
+      .title { fill: #24292f; font-weight: 600; }
+      .subtitle { fill: #57606a; }
+      .accept-bg { fill: #dafbe1; stroke: #2da44e; }
+      .reject-bg { fill: #ffebe9; stroke: #cf222e; }
+      .accept-tx { fill: #1a7f37; font-weight: 600; }
+      .reject-tx { fill: #cf222e; font-weight: 600; }
+    </style>
+  </defs>
+
+  <text x="380" y="28" text-anchor="middle" font-size="17" class="title">
+    Geração de estados intermediários — classe "Tem jogo"
+  </text>
+
+  <text x="380" y="58" text-anchor="middle" font-size="13" class="subtitle">
+    Estado final original — X venceu (linha 1 e coluna 1)
+  </text>
+
+  <!-- Original board (X X X / X O O / X O O) -->
+  <g transform="translate(305, 70)">
+    <rect class="cell" x="0"   y="0"   width="50" height="50"/>
+    <rect class="cell" x="50"  y="0"   width="50" height="50"/>
+    <rect class="cell" x="100" y="0"   width="50" height="50"/>
+    <rect class="cell" x="0"   y="50"  width="50" height="50"/>
+    <rect class="cell" x="50"  y="50"  width="50" height="50"/>
+    <rect class="cell" x="100" y="50"  width="50" height="50"/>
+    <rect class="cell" x="0"   y="100" width="50" height="50"/>
+    <rect class="cell" x="50"  y="100" width="50" height="50"/>
+    <rect class="cell" x="100" y="100" width="50" height="50"/>
+    <line class="xm" x1="10"  y1="10"  x2="40"  y2="40"/>
+    <line class="xm" x1="40"  y1="10"  x2="10"  y2="40"/>
+    <line class="xm" x1="60"  y1="10"  x2="90"  y2="40"/>
+    <line class="xm" x1="90"  y1="10"  x2="60"  y2="40"/>
+    <line class="xm" x1="110" y1="10"  x2="140" y2="40"/>
+    <line class="xm" x1="140" y1="10"  x2="110" y2="40"/>
+    <line class="xm" x1="10"  y1="60"  x2="40"  y2="90"/>
+    <line class="xm" x1="40"  y1="60"  x2="10"  y2="90"/>
+    <circle class="om" cx="75"  cy="75"  r="14"/>
+    <circle class="om" cx="125" cy="75"  r="14"/>
+    <line class="xm" x1="10"  y1="110" x2="40"  y2="140"/>
+    <line class="xm" x1="40"  y1="110" x2="10"  y2="140"/>
+    <circle class="om" cx="75"  cy="125" r="14"/>
+    <circle class="om" cx="125" cy="125" r="14"/>
+  </g>
+
+  <path d="M 380 240 L 380 268" stroke="#6e7781" stroke-width="2" fill="none" marker-end="url(#arr)"/>
+  <text x="380" y="284" text-anchor="middle" font-size="12" font-style="italic" class="subtitle">
+    remoção aleatória de k ∈ {1, 2, 3} peças (em amarelo)
+  </text>
+
+  <!-- Panel 1: Accepted (k=2, removed pos_1 + pos_8) -->
+  <g transform="translate(20, 305)">
+    <rect class="accept-bg" x="0" y="0" width="230" height="295" rx="6" stroke-width="1.5"/>
+    <text x="115" y="22" text-anchor="middle" font-size="13" class="title">k = 2  —  removidas pos_1, pos_8</text>
+    <g transform="translate(40, 35)">
+      <rect class="removed" x="0"   y="0"   width="50" height="50"/>
+      <rect class="cell"    x="50"  y="0"   width="50" height="50"/>
+      <rect class="cell"    x="100" y="0"   width="50" height="50"/>
+      <rect class="cell"    x="0"   y="50"  width="50" height="50"/>
+      <rect class="cell"    x="50"  y="50"  width="50" height="50"/>
+      <rect class="cell"    x="100" y="50"  width="50" height="50"/>
+      <rect class="cell"    x="0"   y="100" width="50" height="50"/>
+      <rect class="removed" x="50"  y="100" width="50" height="50"/>
+      <rect class="cell"    x="100" y="100" width="50" height="50"/>
+      <line class="xm" x1="60"  y1="10"  x2="90"  y2="40"/>
+      <line class="xm" x1="90"  y1="10"  x2="60"  y2="40"/>
+      <line class="xm" x1="110" y1="10"  x2="140" y2="40"/>
+      <line class="xm" x1="140" y1="10"  x2="110" y2="40"/>
+      <line class="xm" x1="10"  y1="60"  x2="40"  y2="90"/>
+      <line class="xm" x1="40"  y1="60"  x2="10"  y2="90"/>
+      <circle class="om" cx="75"  cy="75"  r="14"/>
+      <circle class="om" cx="125" cy="75"  r="14"/>
+      <line class="xm" x1="10"  y1="110" x2="40"  y2="140"/>
+      <line class="xm" x1="40"  y1="110" x2="10"  y2="140"/>
+      <circle class="om" cx="125" cy="125" r="14"/>
+    </g>
+    <text x="115" y="218" text-anchor="middle" font-size="13" fill="#24292f">
+      Validação 1: ✓ sem linha vencedora
+    </text>
+    <text x="115" y="238" text-anchor="middle" font-size="13" fill="#24292f">
+      Validação 2: ✓ soma = 4X − 3O = +1
+    </text>
+    <text x="115" y="270" text-anchor="middle" font-size="14" class="accept-tx">
+      Aceito → rotulado como "Tem jogo"
+    </text>
+  </g>
+
+  <!-- Panel 2: Rejected (vitória persiste) -->
+  <g transform="translate(265, 305)">
+    <rect class="reject-bg" x="0" y="0" width="230" height="295" rx="6" stroke-width="1.5"/>
+    <text x="115" y="22" text-anchor="middle" font-size="13" class="title">k = 2  —  removidas pos_5, pos_8</text>
+    <g transform="translate(40, 35)">
+      <rect class="cell"    x="0"   y="0"   width="50" height="50"/>
+      <rect class="cell"    x="50"  y="0"   width="50" height="50"/>
+      <rect class="cell"    x="100" y="0"   width="50" height="50"/>
+      <rect class="cell"    x="0"   y="50"  width="50" height="50"/>
+      <rect class="removed" x="50"  y="50"  width="50" height="50"/>
+      <rect class="cell"    x="100" y="50"  width="50" height="50"/>
+      <rect class="cell"    x="0"   y="100" width="50" height="50"/>
+      <rect class="removed" x="50"  y="100" width="50" height="50"/>
+      <rect class="cell"    x="100" y="100" width="50" height="50"/>
+      <line class="xm" x1="10"  y1="10"  x2="40"  y2="40"/>
+      <line class="xm" x1="40"  y1="10"  x2="10"  y2="40"/>
+      <line class="xm" x1="60"  y1="10"  x2="90"  y2="40"/>
+      <line class="xm" x1="90"  y1="10"  x2="60"  y2="40"/>
+      <line class="xm" x1="110" y1="10"  x2="140" y2="40"/>
+      <line class="xm" x1="140" y1="10"  x2="110" y2="40"/>
+      <line class="xm" x1="10"  y1="60"  x2="40"  y2="90"/>
+      <line class="xm" x1="40"  y1="60"  x2="10"  y2="90"/>
+      <circle class="om" cx="125" cy="75"  r="14"/>
+      <line class="xm" x1="10"  y1="110" x2="40"  y2="140"/>
+      <line class="xm" x1="40"  y1="110" x2="10"  y2="140"/>
+      <circle class="om" cx="125" cy="125" r="14"/>
+      <line class="winline" x1="5" y1="25" x2="145" y2="25"/>
+    </g>
+    <text x="115" y="218" text-anchor="middle" font-size="13" fill="#24292f">
+      Validação 1: ✗ vitória de X persiste
+    </text>
+    <text x="115" y="238" text-anchor="middle" font-size="13" fill="#24292f">
+      (linha 1: pos_1, pos_2, pos_3 = X)
+    </text>
+    <text x="115" y="270" text-anchor="middle" font-size="14" class="reject-tx">
+      Rejeitado (Validação 1)
+    </text>
+  </g>
+
+  <!-- Panel 3: Rejected (turno inválido) -->
+  <g transform="translate(510, 305)">
+    <rect class="reject-bg" x="0" y="0" width="230" height="295" rx="6" stroke-width="1.5"/>
+    <text x="115" y="22" text-anchor="middle" font-size="13" class="title">k = 3  —  removidas pos_1, pos_4, pos_7</text>
+    <g transform="translate(40, 35)">
+      <rect class="removed" x="0"   y="0"   width="50" height="50"/>
+      <rect class="cell"    x="50"  y="0"   width="50" height="50"/>
+      <rect class="cell"    x="100" y="0"   width="50" height="50"/>
+      <rect class="removed" x="0"   y="50"  width="50" height="50"/>
+      <rect class="cell"    x="50"  y="50"  width="50" height="50"/>
+      <rect class="cell"    x="100" y="50"  width="50" height="50"/>
+      <rect class="removed" x="0"   y="100" width="50" height="50"/>
+      <rect class="cell"    x="50"  y="100" width="50" height="50"/>
+      <rect class="cell"    x="100" y="100" width="50" height="50"/>
+      <line class="xm" x1="60"  y1="10"  x2="90"  y2="40"/>
+      <line class="xm" x1="90"  y1="10"  x2="60"  y2="40"/>
+      <line class="xm" x1="110" y1="10"  x2="140" y2="40"/>
+      <line class="xm" x1="140" y1="10"  x2="110" y2="40"/>
+      <circle class="om" cx="75"  cy="75"  r="14"/>
+      <circle class="om" cx="125" cy="75"  r="14"/>
+      <circle class="om" cx="75"  cy="125" r="14"/>
+      <circle class="om" cx="125" cy="125" r="14"/>
+    </g>
+    <text x="115" y="218" text-anchor="middle" font-size="13" fill="#24292f">
+      Validação 1: ✓ sem vitória
+    </text>
+    <text x="115" y="238" text-anchor="middle" font-size="13" fill="#24292f">
+      Validação 2: ✗ soma = 2X − 4O = −2
+    </text>
+    <text x="115" y="270" text-anchor="middle" font-size="14" class="reject-tx">
+      Rejeitado (Validação 2)
+    </text>
+  </g>
+</svg>

@@ -1,0 +1,180 @@
+<svg viewBox="0 0 760 540" xmlns="http://www.w3.org/2000/svg" font-family="system-ui, -apple-system, 'Segoe UI', sans-serif">
+  <defs>
+    <marker id="arr2" viewBox="0 0 10 10" refX="9" refY="5" markerWidth="7" markerHeight="7" orient="auto">
+      <path d="M0,0 L10,5 L0,10 z" fill="#6e7781"/>
+    </marker>
+    <style>
+      .cell  { fill: #ffffff; stroke: #d0d7de; stroke-width: 1.4; }
+      .removed { fill: #fff8c5; stroke: #d4a72c; stroke-width: 1.5; stroke-dasharray: 3 2; }
+      .xm { stroke: #1f6feb; stroke-width: 3.2; stroke-linecap: round; }
+      .om { stroke: #cf222e; stroke-width: 2.8; fill: none; }
+      .title { fill: #24292f; font-weight: 600; }
+      .subtitle { fill: #57606a; }
+      .panel { fill: #f6f8fa; stroke: #d0d7de; stroke-width: 1; }
+      .accept-tx { fill: #1a7f37; font-weight: 600; }
+    </style>
+  </defs>
+
+  <text x="380" y="28" text-anchor="middle" font-size="17" class="title">
+    Diversidade gerada — uma amostra final produz vários "Tem jogo"
+  </text>
+
+  <text x="380" y="58" text-anchor="middle" font-size="13" class="subtitle">
+    Estado final original (X venceu)
+  </text>
+
+  <!-- Original board - same as figure 1 but smaller for compactness -->
+  <g transform="translate(305, 70)">
+    <rect class="cell" x="0"   y="0"   width="50" height="50"/>
+    <rect class="cell" x="50"  y="0"   width="50" height="50"/>
+    <rect class="cell" x="100" y="0"   width="50" height="50"/>
+    <rect class="cell" x="0"   y="50"  width="50" height="50"/>
+    <rect class="cell" x="50"  y="50"  width="50" height="50"/>
+    <rect class="cell" x="100" y="50"  width="50" height="50"/>
+    <rect class="cell" x="0"   y="100" width="50" height="50"/>
+    <rect class="cell" x="50"  y="100" width="50" height="50"/>
+    <rect class="cell" x="100" y="100" width="50" height="50"/>
+    <line class="xm" x1="10"  y1="10"  x2="40"  y2="40"/>
+    <line class="xm" x1="40"  y1="10"  x2="10"  y2="40"/>
+    <line class="xm" x1="60"  y1="10"  x2="90"  y2="40"/>
+    <line class="xm" x1="90"  y1="10"  x2="60"  y2="40"/>
+    <line class="xm" x1="110" y1="10"  x2="140" y2="40"/>
+    <line class="xm" x1="140" y1="10"  x2="110" y2="40"/>
+    <line class="xm" x1="10"  y1="60"  x2="40"  y2="90"/>
+    <line class="xm" x1="40"  y1="60"  x2="10"  y2="90"/>
+    <circle class="om" cx="75"  cy="75"  r="14"/>
+    <circle class="om" cx="125" cy="75"  r="14"/>
+    <line class="xm" x1="10"  y1="110" x2="40"  y2="140"/>
+    <line class="xm" x1="40"  y1="110" x2="10"  y2="140"/>
+    <circle class="om" cx="75"  cy="125" r="14"/>
+    <circle class="om" cx="125" cy="125" r="14"/>
+  </g>
+
+  <!-- Branch arrows - 6 lines spreading from bottom of original to 6 panels -->
+  <path d="M 380 240 L 105 305" stroke="#6e7781" stroke-width="1.2" fill="none" marker-end="url(#arr2)" opacity="0.7"/>
+  <path d="M 380 240 L 290 305" stroke="#6e7781" stroke-width="1.2" fill="none" marker-end="url(#arr2)" opacity="0.7"/>
+  <path d="M 380 240 L 470 305" stroke="#6e7781" stroke-width="1.2" fill="none" marker-end="url(#arr2)" opacity="0.7"/>
+  <path d="M 380 240 L 655 305" stroke="#6e7781" stroke-width="1.2" fill="none" marker-end="url(#arr2)" opacity="0.7"/>
+
+  <text x="380" y="265" text-anchor="middle" font-size="11" font-style="italic" class="subtitle">
+    múltiplos sorteios independentes geram amostras distintas
+  </text>
+
+  <!-- Panel 1: k=1, remove pos_1 -->
+  <g transform="translate(20, 295)">
+    <rect class="panel" x="0" y="0" width="170" height="225" rx="6"/>
+    <text x="85" y="20" text-anchor="middle" font-size="11" class="title">k=1: pos_1</text>
+    <g transform="translate(40, 30)">
+      <rect class="removed" x="0"   y="0"   width="30" height="30"/>
+      <rect class="cell"    x="30"  y="0"   width="30" height="30"/>
+      <rect class="cell"    x="60"  y="0"   width="30" height="30"/>
+      <rect class="cell"    x="0"   y="30"  width="30" height="30"/>
+      <rect class="cell"    x="30"  y="30"  width="30" height="30"/>
+      <rect class="cell"    x="60"  y="30"  width="30" height="30"/>
+      <rect class="cell"    x="0"   y="60"  width="30" height="30"/>
+      <rect class="cell"    x="30"  y="60"  width="30" height="30"/>
+      <rect class="cell"    x="60"  y="60"  width="30" height="30"/>
+      <line class="xm" x1="36" y1="6"  x2="54" y2="24"/>
+      <line class="xm" x1="54" y1="6"  x2="36" y2="24"/>
+      <line class="xm" x1="66" y1="6"  x2="84" y2="24"/>
+      <line class="xm" x1="84" y1="6"  x2="66" y2="24"/>
+      <line class="xm" x1="6"  y1="36" x2="24" y2="54"/>
+      <line class="xm" x1="24" y1="36" x2="6"  y2="54"/>
+      <circle class="om" cx="45" cy="45" r="9"/>
+      <circle class="om" cx="75" cy="45" r="9"/>
+      <line class="xm" x1="6"  y1="66" x2="24" y2="84"/>
+      <line class="xm" x1="24" y1="66" x2="6"  y2="84"/>
+      <circle class="om" cx="45" cy="75" r="9"/>
+      <circle class="om" cx="75" cy="75" r="9"/>
+    </g>
+    <text x="85" y="155" text-anchor="middle" font-size="11" fill="#24292f">soma = 4X − 4O = 0</text>
+    <text x="85" y="180" text-anchor="middle" font-size="12" class="accept-tx">✓ Tem jogo</text>
+  </g>
+
+  <!-- Panel 2: k=2, remove pos_1 + pos_5 -->
+  <g transform="translate(205, 295)">
+    <rect class="panel" x="0" y="0" width="170" height="225" rx="6"/>
+    <text x="85" y="20" text-anchor="middle" font-size="11" class="title">k=2: pos_1, pos_5</text>
+    <g transform="translate(40, 30)">
+      <rect class="removed" x="0"   y="0"   width="30" height="30"/>
+      <rect class="cell"    x="30"  y="0"   width="30" height="30"/>
+      <rect class="cell"    x="60"  y="0"   width="30" height="30"/>
+      <rect class="cell"    x="0"   y="30"  width="30" height="30"/>
+      <rect class="removed" x="30"  y="30"  width="30" height="30"/>
+      <rect class="cell"    x="60"  y="30"  width="30" height="30"/>
+      <rect class="cell"    x="0"   y="60"  width="30" height="30"/>
+      <rect class="cell"    x="30"  y="60"  width="30" height="30"/>
+      <rect class="cell"    x="60"  y="60"  width="30" height="30"/>
+      <line class="xm" x1="36" y1="6"  x2="54" y2="24"/>
+      <line class="xm" x1="54" y1="6"  x2="36" y2="24"/>
+      <line class="xm" x1="66" y1="6"  x2="84" y2="24"/>
+      <line class="xm" x1="84" y1="6"  x2="66" y2="24"/>
+      <line class="xm" x1="6"  y1="36" x2="24" y2="54"/>
+      <line class="xm" x1="24" y1="36" x2="6"  y2="54"/>
+      <circle class="om" cx="75" cy="45" r="9"/>
+      <line class="xm" x1="6"  y1="66" x2="24" y2="84"/>
+      <line class="xm" x1="24" y1="66" x2="6"  y2="84"/>
+      <circle class="om" cx="45" cy="75" r="9"/>
+      <circle class="om" cx="75" cy="75" r="9"/>
+    </g>
+    <text x="85" y="155" text-anchor="middle" font-size="11" fill="#24292f">soma = 4X − 3O = 1</text>
+    <text x="85" y="180" text-anchor="middle" font-size="12" class="accept-tx">✓ Tem jogo</text>
+  </g>
+
+  <!-- Panel 3: k=3, remove pos_2, pos_4, pos_5 -->
+  <g transform="translate(390, 295)">
+    <rect class="panel" x="0" y="0" width="170" height="225" rx="6"/>
+    <text x="85" y="20" text-anchor="middle" font-size="11" class="title">k=3: pos_2, pos_4, pos_5</text>
+    <g transform="translate(40, 30)">
+      <rect class="cell"    x="0"   y="0"   width="30" height="30"/>
+      <rect class="removed" x="30"  y="0"   width="30" height="30"/>
+      <rect class="cell"    x="60"  y="0"   width="30" height="30"/>
+      <rect class="removed" x="0"   y="30"  width="30" height="30"/>
+      <rect class="removed" x="30"  y="30"  width="30" height="30"/>
+      <rect class="cell"    x="60"  y="30"  width="30" height="30"/>
+      <rect class="cell"    x="0"   y="60"  width="30" height="30"/>
+      <rect class="cell"    x="30"  y="60"  width="30" height="30"/>
+      <rect class="cell"    x="60"  y="60"  width="30" height="30"/>
+      <line class="xm" x1="6"  y1="6"  x2="24" y2="24"/>
+      <line class="xm" x1="24" y1="6"  x2="6"  y2="24"/>
+      <line class="xm" x1="66" y1="6"  x2="84" y2="24"/>
+      <line class="xm" x1="84" y1="6"  x2="66" y2="24"/>
+      <circle class="om" cx="75" cy="45" r="9"/>
+      <line class="xm" x1="6"  y1="66" x2="24" y2="84"/>
+      <line class="xm" x1="24" y1="66" x2="6"  y2="84"/>
+      <circle class="om" cx="45" cy="75" r="9"/>
+      <circle class="om" cx="75" cy="75" r="9"/>
+    </g>
+    <text x="85" y="155" text-anchor="middle" font-size="11" fill="#24292f">soma = 3X − 3O = 0</text>
+    <text x="85" y="180" text-anchor="middle" font-size="12" class="accept-tx">✓ Tem jogo</text>
+  </g>
+
+  <!-- Panel 4: k=3, remove pos_3, pos_7, pos_6 -->
+  <g transform="translate(575, 295)">
+    <rect class="panel" x="0" y="0" width="170" height="225" rx="6"/>
+    <text x="85" y="20" text-anchor="middle" font-size="11" class="title">k=3: pos_3, pos_6, pos_7</text>
+    <g transform="translate(40, 30)">
+      <rect class="cell"    x="0"   y="0"   width="30" height="30"/>
+      <rect class="cell"    x="30"  y="0"   width="30" height="30"/>
+      <rect class="removed" x="60"  y="0"   width="30" height="30"/>
+      <rect class="cell"    x="0"   y="30"  width="30" height="30"/>
+      <rect class="cell"    x="30"  y="30"  width="30" height="30"/>
+      <rect class="removed" x="60"  y="30"  width="30" height="30"/>
+      <rect class="removed" x="0"   y="60"  width="30" height="30"/>
+      <rect class="cell"    x="30"  y="60"  width="30" height="30"/>
+      <rect class="cell"    x="60"  y="60"  width="30" height="30"/>
+      <line class="xm" x1="6"  y1="6"  x2="24" y2="24"/>
+      <line class="xm" x1="24" y1="6"  x2="6"  y2="24"/>
+      <line class="xm" x1="36" y1="6"  x2="54" y2="24"/>
+      <line class="xm" x1="54" y1="6"  x2="36" y2="24"/>
+      <line class="xm" x1="6"  y1="36" x2="24" y2="54"/>
+      <line class="xm" x1="24" y1="36" x2="6"  y2="54"/>
+      <circle class="om" cx="45" cy="45" r="9"/>
+      <circle class="om" cx="45" cy="75" r="9"/>
+      <circle class="om" cx="75" cy="75" r="9"/>
+    </g>
+    <text x="85" y="155" text-anchor="middle" font-size="11" fill="#24292f">soma = 3X − 3O = 0</text>
+    <text x="85" y="180" text-anchor="middle" font-size="12" class="accept-tx">✓ Tem jogo</text>
+  </g>
+
+</svg>

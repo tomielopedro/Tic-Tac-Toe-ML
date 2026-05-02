@@ -1708,3 +1708,103 @@ pos_1,pos_2,pos_3,pos_4,pos_5,pos_6,pos_7,pos_8,pos_9,classe
 -1,1,1,1,0,-1,-1,-1,1,Tem jogo,GradientBoost,Empate,2026-04-22T15:05:12.091918
 0,1,-1,-1,-1,1,1,1,-1,Tem jogo,GradientBoost,Empate,2026-04-22T15:05:18.773529
 -1,-1,1,1,1,-1,-1,1,0,Tem jogo,GradientBoost,Empate,2026-04-22T15:05:21.060920
+-1,0,-1,-1,1,1,1,1,-1,Tem jogo,GradientBoost,Empate,2026-04-29T21:33:52.913857
+0,1,1,0,-1,0,1,-1,-1,Tem jogo,GradientBoost,O venceu,2026-04-29T21:33:53.328475
+0,1,1,0,-1,1,1,-1,-1,Tem jogo,GradientBoost,O venceu,2026-04-29T21:33:53.329858
+1,-1,-1,-1,1,1,1,0,-1,Tem jogo,GradientBoost,Empate,2026-04-29T21:33:53.601207
+1,1,-1,1,-1,1,0,0,-1,Tem jogo,GradientBoost,O venceu,2026-04-29T21:33:55.486581
+1,-1,-1,1,1,-1,0,1,-1,O venceu,GradientBoost,Tem jogo,2026-04-29T21:33:57.238023
+1,-1,1,1,-1,1,-1,1,-1,Empate,GradientBoost,Tem jogo,2026-04-29T21:33:58.188341
+-1,1,0,-1,-1,1,-1,1,1,O venceu,GradientBoost,Tem jogo,2026-04-29T21:33:58.596293
+-1,0,1,0,1,0,-1,-1,1,Tem jogo,GradientBoost,X venceu,2026-04-29T21:33:59.414090
+1,-1,1,1,-1,1,-1,1,-1,Empate,GradientBoost,Tem jogo,2026-04-29T21:34:00.796643
+0,1,1,0,-1,1,0,-1,-1,Tem jogo,GradientBoost,O venceu,2026-04-29T21:34:01.637785
+0,1,1,0,-1,1,1,-1,-1,Tem jogo,GradientBoost,O venceu,2026-04-29T21:34:01.639151
+0,1,1,1,-1,0,1,-1,-1,Tem jogo,GradientBoost,O venceu,2026-04-29T21:34:02.326956
+1,-1,1,-1,1,1,-1,1,-1,Empate,GradientBoost,Tem jogo,2026-04-29T21:34:02.883599
+-1,1,1,-1,-1,0,0,1,1,Tem jogo,GradientBoost,O venceu,2026-04-29T21:34:03.020708
+-1,0,-1,-1,1,1,1,0,1,Tem jogo,GradientBoost,X venceu,2026-04-29T21:34:03.296867
+0,0,-1,-1,1,1,1,0,-1,Tem jogo,GradientBoost,Empate,2026-04-29T21:34:04.537969
+0,0,-1,-1,1,1,1,1,-1,Tem jogo,GradientBoost,Empate,2026-04-29T21:34:04.539253
+-1,0,-1,-1,1,1,1,1,-1,Tem jogo,GradientBoost,Empate,2026-04-29T21:34:04.540372
+1,-1,1,-1,1,1,-1,1,-1,Empate,GradientBoost,Tem jogo,2026-04-29T21:34:05.101280
+-1,1,-1,1,-1,1,1,-1,0,Tem jogo,GradientBoost,Empate,2026-04-29T21:34:05.243121
+1,1,-1,-1,0,1,1,-1,-1,Tem jogo,GradientBoost,Empate,2026-04-29T21:34:05.524232
+0,-1,1,1,-1,-1,-1,1,1,Tem jogo,GradientBoost,Empate,2026-04-29T21:34:06.224029
+1,1,-1,-1,-1,1,1,0,-1,Tem jogo,GradientBoost,Empate,2026-04-29T21:34:06.503646
+-1,1,0,1,-1,-1,1,-1,1,Tem jogo,GradientBoost,Empate,2026-04-29T21:34:06.784682
+0,-1,1,1,-1,-1,-1,1,1,Tem jogo,GradientBoost,Empate,2026-04-29T21:34:07.205985
+0,1,1,-1,1,-1,-1,0,1,Tem jogo,GradientBoost,X venceu,2026-04-29T21:34:07.634285
+1,-1,1,-1,-1,1,1,1,-1,Empate,GradientBoost,Tem jogo,2026-04-29T21:34:08.206821
+1,-1,1,-1,1,1,-1,1,-1,Empate,GradientBoost,Tem jogo,2026-04-29T21:34:13.287812
+0,1,-1,-1,1,1,1,-1,-1,Tem jogo,GradientBoost,Empate,2026-04-29T21:34:13.430371
+0,-1,1,1,-1,-1,-1,1,1,Tem jogo,GradientBoost,Empate,2026-04-29T21:34:13.721561
+1,1,-1,1,1,-1,0,-1,0,Tem jogo,GradientBoost,X venceu,2026-04-29T21:34:14.299548
+1,1,-1,1,1,-1,-1,-1,0,Tem jogo,GradientBoost,X venceu,2026-04-29T21:34:14.300862
+1,-1,1,-1,1,1,-1,1,-1,Empate,GradientBoost,Tem jogo,2026-04-29T21:34:16.037483
+1,1,-1,-1,0,1,1,-1,-1,Tem jogo,GradientBoost,Empate,2026-04-29T21:34:17.214429
+-1,1,0,1,-1,-1,-1,1,1,Tem jogo,GradientBoost,Empate,2026-04-29T21:34:17.790432
+1,1,0,1,1,-1,0,-1,-1,Tem jogo,GradientBoost,X venceu,2026-04-29T21:34:17.939883
+1,-1,1,1,-1,1,-1,1,-1,Empate,GradientBoost,Tem jogo,2026-04-29T21:34:18.829506
+1,-1,1,-1,-1,1,1,1,-1,Empate,GradientBoost,Tem jogo,2026-04-29T21:34:19.414189
+-1,1,0,1,1,-1,-1,-1,1,Tem jogo,GradientBoost,Empate,2026-04-29T21:34:19.860522
+1,-1,1,1,-1,-1,-1,1,0,Tem jogo,GradientBoost,Empate,2026-04-29T21:34:20.307594
+0,0,-1,-1,1,1,1,0,-1,Tem jogo,GradientBoost,Empate,2026-04-29T21:34:22.521610
+0,1,-1,-1,1,1,1,-1,-1,Tem jogo,GradientBoost,Empate,2026-04-29T21:34:22.523770
+0,1,1,-1,1,-1,-1,-1,1,Tem jogo,GradientBoost,X venceu,2026-04-29T21:34:23.125260
+1,1,-1,-1,-1,1,0,1,-1,Tem jogo,GradientBoost,Empate,2026-04-29T21:34:23.869755
+1,-1,1,1,-1,-1,-1,1,0,Tem jogo,GradientBoost,Empate,2026-04-29T21:34:24.017760
+-1,1,0,1,1,-1,-1,-1,1,Tem jogo,GradientBoost,Empate,2026-04-29T21:34:27.281613
+-1,1,0,1,-1,-1,-1,1,1,Tem jogo,GradientBoost,Empate,2026-04-29T21:34:28.312062
+-1,-1,1,1,1,-1,-1,0,1,Tem jogo,GradientBoost,Empate,2026-04-29T21:34:29.052679
+0,-1,-1,-1,1,1,1,1,-1,Tem jogo,GradientBoost,Empate,2026-04-29T21:34:31.824335
+-1,1,0,-1,-1,1,-1,1,1,O venceu,GradientBoost,Tem jogo,2026-04-29T21:34:32.120905
+0,-1,1,-1,1,-1,-1,1,1,Tem jogo,GradientBoost,X venceu,2026-04-29T21:34:33.467850
+1,-1,1,-1,1,1,-1,1,-1,Empate,GradientBoost,Tem jogo,2026-04-29T21:34:33.918703
+0,-1,1,1,-1,-1,-1,1,1,Tem jogo,GradientBoost,Empate,2026-04-29T21:34:37.527698
+1,-1,1,1,-1,1,-1,1,-1,Empate,GradientBoost,Tem jogo,2026-04-29T21:34:37.829966
+-1,1,1,0,1,1,-1,0,-1,Tem jogo,GradientBoost,X venceu,2026-04-29T21:34:37.982000
+-1,0,1,1,1,-1,-1,0,1,Tem jogo,GradientBoost,Empate,2026-04-29T21:34:38.291952
+-1,-1,1,1,1,-1,-1,0,1,Tem jogo,GradientBoost,Empate,2026-04-29T21:34:38.293211
+1,-1,1,-1,-1,1,1,1,-1,Empate,GradientBoost,Tem jogo,2026-04-29T21:34:41.338189
+0,-1,1,1,1,-1,-1,-1,1,Tem jogo,GradientBoost,Empate,2026-04-29T21:34:42.113946
+0,1,1,-1,1,-1,-1,-1,1,Tem jogo,GradientBoost,X venceu,2026-04-29T21:34:42.725410
+-1,-1,1,1,1,-1,-1,1,0,Tem jogo,GradientBoost,Empate,2026-04-29T21:34:43.185002
+-1,0,-1,-1,1,1,1,0,1,Tem jogo,GradientBoost,X venceu,2026-04-29T21:34:49.057159
+-1,1,1,1,-1,-1,1,-1,0,Tem jogo,GradientBoost,Empate,2026-04-29T21:34:49.369687
+1,1,-1,-1,0,1,1,-1,-1,Tem jogo,GradientBoost,Empate,2026-04-29T21:34:50.459954
+0,1,1,1,-1,-1,1,-1,-1,Tem jogo,GradientBoost,O venceu,2026-04-29T21:34:50.617308
+1,1,-1,-1,0,1,1,-1,-1,Tem jogo,GradientBoost,Empate,2026-04-29T21:34:53.385400
+1,-1,1,1,-1,1,-1,1,-1,Empate,GradientBoost,Tem jogo,2026-04-29T21:34:53.544898
+1,-1,1,-1,1,1,-1,1,-1,Empate,GradientBoost,Tem jogo,2026-04-29T21:34:54.335950
+1,1,-1,1,1,0,-1,-1,0,Tem jogo,GradientBoost,X venceu,2026-04-29T21:34:54.655963
+0,0,1,0,1,0,-1,-1,1,Tem jogo,GradientBoost,X venceu,2026-04-29T21:34:54.966826
+-1,0,1,0,1,0,-1,-1,1,Tem jogo,GradientBoost,X venceu,2026-04-29T21:34:54.968103
+1,-1,1,1,-1,1,-1,1,-1,Empate,GradientBoost,Tem jogo,2026-04-29T21:34:55.759539
+-1,1,-1,1,-1,0,1,-1,1,Tem jogo,GradientBoost,Empate,2026-04-29T21:34:58.648958
+-1,0,1,1,1,-1,-1,-1,1,Tem jogo,GradientBoost,Empate,2026-04-29T21:35:01.058134
+1,1,-1,1,-1,0,0,1,-1,Tem jogo,GradientBoost,O venceu,2026-04-29T21:35:01.381056
+0,-1,1,1,1,-1,-1,1,-1,Tem jogo,GradientBoost,Empate,2026-04-29T21:35:01.704233
+1,-1,1,1,0,-1,-1,1,-1,Tem jogo,GradientBoost,Empate,2026-04-29T21:35:03.655954
+1,-1,1,-1,-1,1,1,1,-1,Empate,GradientBoost,Tem jogo,2026-04-29T21:35:04.312417
+-1,1,-1,1,1,-1,1,-1,0,Tem jogo,GradientBoost,Empate,2026-05-02T12:53:27.256525
+-1,1,-1,1,-1,1,1,-1,1,Empate,GradientBoost,Tem jogo,2026-05-02T12:53:27.754261
+1,1,-1,-1,-1,1,1,-1,0,Tem jogo,GradientBoost,Empate,2026-05-02T12:53:30.922472
+1,-1,1,1,1,-1,-1,1,-1,Empate,GradientBoost,Tem jogo,2026-05-02T12:53:34.586772
+1,-1,1,-1,1,1,-1,1,-1,Empate,GradientBoost,Tem jogo,2026-05-02T12:53:36.279159
+-1,1,-1,-1,1,1,1,-1,1,Empate,GradientBoost,Tem jogo,2026-05-02T12:53:37.803628
+-1,1,1,1,-1,-1,0,-1,1,Tem jogo,GradientBoost,Empate,2026-05-02T12:53:40.699501
+0,-1,1,-1,1,-1,-1,1,1,Tem jogo,GradientBoost,Empate,2026-05-02T12:53:40.869578
+-1,1,-1,1,1,-1,0,-1,1,Tem jogo,GradientBoost,Empate,2026-05-02T12:53:41.730615
+1,-1,1,0,-1,1,-1,1,-1,Tem jogo,GradientBoost,Empate,2026-05-02T12:53:42.249556
+1,-1,0,1,-1,1,-1,1,-1,Tem jogo,GradientBoost,Empate,2026-05-02T12:55:45.917170
+1,-1,1,1,-1,-1,-1,1,0,Tem jogo,GradientBoost,Empate,2026-05-02T12:55:45.933704
+-1,1,-1,-1,1,1,1,-1,1,Empate,GradientBoost,Tem jogo,2026-05-02T12:55:46.332867
+-1,1,-1,-1,1,1,1,-1,1,Empate,GradientBoost,Tem jogo,2026-05-02T12:55:46.425627
+1,-1,1,-1,1,1,-1,1,-1,Empate,GradientBoost,Tem jogo,2026-05-02T12:55:46.506825
+1,-1,1,-1,1,1,-1,1,-1,Empate,GradientBoost,Tem jogo,2026-05-02T12:55:46.537791
+1,-1,1,-1,0,-1,-1,1,1,Tem jogo,GradientBoost,Empate,2026-05-02T12:55:46.601285
+-1,1,1,1,-1,-1,-1,1,0,Tem jogo,GradientBoost,Empate,2026-05-02T12:55:46.682726
+-1,1,-1,1,-1,1,1,-1,1,Empate,GradientBoost,Tem jogo,2026-05-02T12:55:46.719890
+0,1,1,1,-1,-1,1,-1,-1,Tem jogo,GradientBoost,O venceu,2026-05-02T12:55:46.745979
+-1,-1,1,1,1,0,-1,-1,1,Tem jogo,GradientBoost,O venceu,2026-05-02T12:55:46.853478
