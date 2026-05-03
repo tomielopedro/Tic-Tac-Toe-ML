@@ -154,7 +154,15 @@ def simular_partida_completa(modelo, encoder, modelo_nome):
 
         tab_flat = board.flatten()
         df_tab = pd.DataFrame([tab_flat], columns=COLUNAS_TREINO)
-        prev_num = modelo.predict(df_tab)
+        
+        # Lógica especial para MLP_Extra_Feature
+        if modelo_nome == "MLP_Extra_Feature":
+            tabuleiro_completo = ((df_tab[COLUNAS_TREINO] != 0).sum(axis=1) == 9).astype(int)
+            df_tab['tabuleiro_completo'] = tabuleiro_completo
+            prev_num = modelo.predict(df_tab)
+        else:
+            prev_num = modelo.predict(df_tab[COLUNAS_TREINO])
+            
         prev_text = encoder.inverse_transform(prev_num)[0]
         status_real = obter_status_real(board)
 
@@ -279,8 +287,15 @@ with tab_main:
         else:
             tabuleiro_flat = st.session_state.board.flatten()
             df_jogada = pd.DataFrame([tabuleiro_flat], columns=COLUNAS_TREINO)
-
-            previsao_numerica = modelo_ia.predict(df_jogada)
+            
+            # Lógica especial para MLP_Extra_Feature
+            if modelo_selecionado == "MLP_Extra_Feature":
+                tabuleiro_completo = ((df_jogada[COLUNAS_TREINO] != 0).sum(axis=1) == 9).astype(int)
+                df_jogada['tabuleiro_completo'] = tabuleiro_completo
+                previsao_numerica = modelo_ia.predict(df_jogada)
+            else:
+                previsao_numerica = modelo_ia.predict(df_jogada[COLUNAS_TREINO])
+                
             previsao_texto = encoder.inverse_transform(previsao_numerica)[0]
 
             sym_real = obter_status_real(st.session_state.board)
@@ -296,7 +311,14 @@ with tab_main:
                 if tab_hash not in st.session_state.hashes_avaliados and tab.any():
                     tab_flat = tab.flatten()
                     df_tab = pd.DataFrame([tab_flat], columns=COLUNAS_TREINO)
-                    prev_num = modelo_ia.predict(df_tab)
+                    
+                    if modelo_selecionado == "MLP_Extra_Feature":
+                        tab_comp = ((df_tab[COLUNAS_TREINO] != 0).sum(axis=1) == 9).astype(int)
+                        df_tab['tabuleiro_completo'] = tab_comp
+                        prev_num = modelo_ia.predict(df_tab)
+                    else:
+                        prev_num = modelo_ia.predict(df_tab[COLUNAS_TREINO])
+                        
                     prev_text = encoder.inverse_transform(prev_num)[0]
                     status_tab = obter_status_real(tab)
 
@@ -734,75 +756,11 @@ with tab_models:
                         s = df_all[df_all["modelo"] == nome]
                         ta = s["acertos"].sum()
                         tj = s["total_jogadas"].sum()
-                        return {
-                            "Modelo": nome, "Partidas": len(s),
-                            "Acurácia Global": f"{(ta/tj*100):.1f}%" if tj > 0 else "N/A",
-                            "Acurácia Média": f"{s['acuracia_modelo'].mean():.1f}%",
-                            "Melhor Partida": f"{s['acuracia_modelo'].max():.0f}%",
-                            "Pior Partida": f"{s['acuracia_modelo'].min():.0f}%",
-                        }
-
-                    df_comp = pd.DataFrame([calc_stats(m1), calc_stats(m2)])
-                    st.dataframe(df_comp, hide_index=True, use_container_width=True)
-
-                    st.markdown("**Evolução da acurácia ao longo das partidas:**")
-                    evo_data = []
-                    for nome in [m1, m2]:
-                        s = df_all[df_all["modelo"] == nome].sort_values("id")
-                        for idx, (_, row) in enumerate(s.iterrows(), 1):
-                            evo_data.append({
-                                "Partida Nº": idx,
-                                "Acurácia (%)": row["acuracia_modelo"],
-                                "Modelo": nome,
-                            })
-                    if evo_data:
-                        st.line_chart(pd.DataFrame(evo_data), x="Partida Nº", y="Acurácia (%)", color="Modelo", height=300)
-
-
-with tab_data:
-    st.header("🗃️ Dataset de Correções")
-    st.caption("Dados onde modelos erraram — inclui correções manuais e automáticas (simulação).")
-
-    if CAMINHO_CORRECOES.exists():
-        try:
-            df_correcoes = pd.read_csv(CAMINHO_CORRECOES)
-        except (pd.errors.ParserError, ValueError):
-            linhas_raw = open(CAMINHO_CORRECOES).readlines()
-            rows_parsed = []
-            for line in linhas_raw[1:]:
-                parts = line.strip().split(",")
-                if len(parts) == 10:
-                    rows_parsed.append(parts + ["desconhecido", "desconhecido", ""])
-                elif len(parts) >= 13:
-                    rows_parsed.append(parts[:13])
-            df_correcoes = pd.DataFrame(rows_parsed, columns=COLUNAS_CSV)
-
-        if "modelo_origem" in df_correcoes.columns:
-            modelos_corr = df_correcoes["modelo_origem"].unique().tolist()
-            filtro_m = st.multiselect("Filtrar por modelo de origem", modelos_corr, default=modelos_corr)
-            df_correcoes_filtrado = df_correcoes[df_correcoes["modelo_origem"].isin(filtro_m)]
-
-            kc1, kc2, kc3 = st.columns(3)
-            with kc1:
-                st.metric("Total de Correções", len(df_correcoes_filtrado))
-            with kc2:
-                st.metric("Modelos com Correções", df_correcoes_filtrado["modelo_origem"].nunique())
-            with kc3:
-                if "previsao_modelo" in df_correcoes_filtrado.columns:
-                    top_erro = df_correcoes_filtrado["previsao_modelo"].value_counts()
-                    if not top_erro.empty:
-                        st.metric("Previsão Errada mais Comum", top_erro.index[0])
-
-            if len(modelos_corr) > 1:
-                st.subheader("Correções por Modelo")
-                corr_por_modelo = df_correcoes_filtrado["modelo_origem"].value_counts().reset_index()
-                corr_por_modelo.columns = ["Modelo", "Correções"]
-                st.bar_chart(corr_por_modelo, x="Modelo", y="Correções", height=250)
-
-            st.subheader("Tabela Completa")
-            st.data_editor(df_correcoes_filtrado, hide_index=True, use_container_width=True, num_rows="dynamic")
-        else:
-            st.warning("O dataset atual não possui a coluna `modelo_origem`. Novas correções já incluirão essa informação.")
-            st.data_editor(df_correcoes, hide_index=True, use_container_width=True)
-    else:
-        st.info("Nenhuma correção registrada ainda. Use o painel de retroalimentação durante o jogo ou rode uma simulação.")
+                        return (ta/tj*100) if tj > 0 else 0
+                    
+                    acc1 = calc_stats(m1)
+                    acc2 = calc_stats(m2)
+                    
+                    st.write(f"Comparando **{m1}** vs **{m2}**")
+                    st.progress(acc1/100, text=f"{m1}: {acc1:.1f}%")
+                    st.progress(acc2/100, text=f"{m2}: {acc2:.1f}%")

@@ -1808,3 +1808,273 @@ pos_1,pos_2,pos_3,pos_4,pos_5,pos_6,pos_7,pos_8,pos_9,classe
 -1,1,-1,1,-1,1,1,-1,1,Empate,GradientBoost,Tem jogo,2026-05-02T12:55:46.719890
 0,1,1,1,-1,-1,1,-1,-1,Tem jogo,GradientBoost,O venceu,2026-05-02T12:55:46.745979
 -1,-1,1,1,1,0,-1,-1,1,Tem jogo,GradientBoost,O venceu,2026-05-02T12:55:46.853478
+1,0,1,-1,0,-1,-1,1,1,Tem jogo,MLP_Extra_Feature,X venceu,2026-05-02T20:39:16.400784
+1,0,1,1,1,-1,0,-1,-1,Tem jogo,MLP_Extra_Feature,X venceu,2026-05-02T20:39:16.581753
+1,0,-1,1,-1,1,0,-1,0,Tem jogo,MLP_Extra_Feature,O venceu,2026-05-02T20:39:16.689503
+1,0,1,-1,0,-1,-1,1,1,Tem jogo,MLP_Extra_Feature,X venceu,2026-05-02T20:39:17.200870
+0,1,1,-1,0,-1,1,-1,1,Tem jogo,MLP_Extra_Feature,X venceu,2026-05-02T20:39:17.527617
+1,-1,1,0,-1,-1,1,1,0,Tem jogo,RandomForest,X venceu,2026-05-02T20:40:22.607458
+1,0,-1,0,0,-1,1,-1,1,Tem jogo,RandomForest,X venceu,2026-05-02T20:40:22.686437
+0,1,1,0,-1,-1,-1,1,0,Tem jogo,RandomForest,X venceu,2026-05-02T20:40:23.169936
+-1,1,1,0,-1,-1,-1,1,1,Tem jogo,RandomForest,O venceu,2026-05-02T20:40:23.184280
+-1,-1,1,0,1,0,-1,1,1,Tem jogo,RandomForest,O venceu,2026-05-02T20:40:23.378178
+-1,-1,1,0,1,-1,-1,1,1,Tem jogo,RandomForest,Empate,2026-05-02T20:40:23.382879
+-1,-1,0,-1,1,1,0,1,1,Tem jogo,RandomForest,O venceu,2026-05-02T20:40:23.485462
+0,1,-1,-1,-1,1,1,-1,1,Tem jogo,RandomForest,Empate,2026-05-02T20:40:23.800647
+-1,-1,1,1,1,0,-1,-1,1,Tem jogo,RandomForest,Empate,2026-05-02T20:40:24.218145
+-1,1,1,0,-1,0,1,-1,1,Tem jogo,RandomForest,X venceu,2026-05-02T20:40:24.324193
+-1,1,1,-1,-1,0,1,-1,1,Tem jogo,RandomForest,X venceu,2026-05-02T20:40:24.331767
+-1,1,-1,-1,1,1,1,-1,1,Empate,RandomForest,X venceu,2026-05-02T20:40:24.459222
+0,1,1,0,-1,1,0,-1,0,Tem jogo,RandomForest,X venceu,2026-05-02T20:40:24.532122
+0,1,1,0,-1,1,-1,-1,0,Tem jogo,RandomForest,X venceu,2026-05-02T20:40:24.541854
+0,1,1,1,-1,0,-1,0,-1,Tem jogo,RandomForest,O venceu,2026-05-02T20:40:25.340766
+0,-1,-1,1,-1,0,1,0,1,Tem jogo,RandomForest,X venceu,2026-05-02T20:40:25.591396
+-1,1,1,1,0,1,-1,-1,0,Tem jogo,RandomForest,O venceu,2026-05-02T20:40:25.960352
+-1,1,1,1,-1,1,-1,-1,0,Tem jogo,RandomForest,O venceu,2026-05-02T20:40:25.970934
+-1,1,1,0,-1,1,0,0,0,Tem jogo,RandomForest,O venceu,2026-05-02T20:40:26.043009
+-1,1,1,1,0,1,-1,0,-1,Tem jogo,RandomForest,O venceu,2026-05-02T20:40:26.143258
+0,1,-1,1,-1,-1,1,-1,1,Tem jogo,RandomForest,Empate,2026-05-02T20:40:26.326030
+-1,1,1,0,-1,1,1,-1,0,Tem jogo,RandomForest,O venceu,2026-05-02T20:40:26.809917
+-1,1,1,-1,-1,1,1,-1,0,Tem jogo,RandomForest,O venceu,2026-05-02T20:40:26.815101
+1,-1,1,-1,-1,0,1,1,0,Tem jogo,RandomForest,X venceu,2026-05-02T20:40:26.924398
+1,-1,1,-1,-1,0,1,1,-1,Tem jogo,RandomForest,X venceu,2026-05-02T20:40:26.940257
+-1,1,0,-1,1,-1,0,0,1,Tem jogo,RandomForest,X venceu,2026-05-02T20:40:27.154509
+1,1,-1,0,-1,1,0,-1,1,Tem jogo,RandomForest,O venceu,2026-05-02T20:40:27.601311
+1,-1,-1,-1,-1,1,1,1,0,Tem jogo,RandomForest,X venceu,2026-05-02T20:40:27.972159
+0,1,1,0,-1,1,0,-1,0,Tem jogo,RandomForest,X venceu,2026-05-02T20:40:28.172254
+-1,1,1,0,-1,1,0,-1,0,Tem jogo,RandomForest,O venceu,2026-05-02T20:40:28.177064
+-1,1,1,0,-1,1,1,-1,0,Tem jogo,RandomForest,O venceu,2026-05-02T20:40:28.189582
+1,-1,0,-1,-1,0,1,0,1,Tem jogo,RandomForest,O venceu,2026-05-02T20:40:28.286430
+1,-1,1,-1,-1,0,1,0,1,Tem jogo,RandomForest,O venceu,2026-05-02T20:40:28.291137
+1,1,-1,1,-1,-1,0,0,1,Tem jogo,RandomForest,O venceu,2026-05-02T20:40:28.721552
+-1,1,-1,1,1,-1,-1,0,1,Tem jogo,RandomForest,Empate,2026-05-02T20:40:28.840327
+-1,1,-1,1,1,0,1,-1,0,Tem jogo,RandomForest,X venceu,2026-05-02T20:40:28.939195
+-1,1,-1,1,1,0,1,-1,-1,Tem jogo,RandomForest,X venceu,2026-05-02T20:40:28.955798
+1,-1,0,0,-1,0,1,1,0,Tem jogo,RandomForest,X venceu,2026-05-02T20:40:29.045440
+1,-1,0,0,-1,0,1,1,-1,Tem jogo,RandomForest,X venceu,2026-05-02T20:40:29.059436
+1,-1,1,-1,-1,0,1,1,-1,Tem jogo,RandomForest,X venceu,2026-05-02T20:40:29.073760
+-1,0,0,-1,1,0,1,0,1,Tem jogo,RandomForest,X venceu,2026-05-02T20:40:29.621727
+-1,0,-1,-1,1,0,1,0,1,Tem jogo,RandomForest,X venceu,2026-05-02T20:40:29.631716
+-1,1,-1,-1,1,0,1,0,1,Tem jogo,RandomForest,X venceu,2026-05-02T20:40:29.636970
+-1,1,-1,-1,1,0,1,-1,1,Tem jogo,RandomForest,X venceu,2026-05-02T20:40:29.641379
+-1,1,-1,-1,1,1,1,-1,1,Empate,RandomForest,X venceu,2026-05-02T20:40:29.650860
+0,1,1,-1,-1,1,1,-1,-1,Tem jogo,RandomForest,O venceu,2026-05-02T20:40:29.757246
+-1,-1,1,0,1,0,-1,1,1,Tem jogo,RandomForest,O venceu,2026-05-02T20:40:29.864652
+1,1,0,-1,-1,1,1,-1,-1,Tem jogo,RandomForest,Empate,2026-05-02T20:40:30.466563
+-1,1,-1,0,1,1,1,-1,-1,Tem jogo,RandomForest,X venceu,2026-05-02T20:40:30.717583
+1,0,1,1,-1,1,-1,-1,0,Tem jogo,RandomForest,O venceu,2026-05-02T20:40:31.014039
+-1,0,1,1,-1,0,1,-1,1,Tem jogo,RandomForest,O venceu,2026-05-02T20:40:31.284527
+1,0,0,-1,-1,1,1,1,-1,Tem jogo,RandomForest,Empate,2026-05-02T20:40:31.533606
+1,0,-1,-1,-1,1,1,1,-1,Tem jogo,RandomForest,Empate,2026-05-02T20:40:31.545104
+1,-1,-1,-1,1,1,1,0,-1,Tem jogo,RandomForest,Empate,2026-05-02T20:40:31.866818
+0,-1,-1,-1,1,0,1,0,1,Tem jogo,RandomForest,X venceu,2026-05-02T20:40:31.941408
+0,-1,-1,-1,1,1,1,0,1,Tem jogo,RandomForest,X venceu,2026-05-02T20:40:31.952306
+1,0,1,1,-1,-1,0,-1,0,Tem jogo,RandomForest,X venceu,2026-05-02T20:40:32.044127
+1,1,-1,0,0,0,-1,0,1,Tem jogo,KNN,X venceu,2026-05-02T20:40:38.452577
+0,0,1,0,1,-1,0,0,0,Tem jogo,KNN,X venceu,2026-05-02T20:40:38.491562
+0,0,1,-1,1,-1,0,0,1,Tem jogo,KNN,X venceu,2026-05-02T20:40:38.494136
+-1,0,1,-1,1,-1,0,0,1,Tem jogo,KNN,O venceu,2026-05-02T20:40:38.496721
+-1,1,1,-1,1,-1,0,0,1,Tem jogo,KNN,O venceu,2026-05-02T20:40:38.498679
+1,-1,0,-1,0,0,0,1,1,Tem jogo,KNN,X venceu,2026-05-02T20:40:38.552841
+1,-1,1,-1,0,0,-1,1,1,Tem jogo,KNN,X venceu,2026-05-02T20:40:38.555671
+-1,0,1,1,-1,-1,0,0,1,Tem jogo,KNN,Empate,2026-05-02T20:40:38.582411
+-1,1,1,1,-1,-1,1,-1,1,Empate,KNN,Tem jogo,2026-05-02T20:40:38.585505
+1,-1,1,-1,-1,1,1,1,-1,Empate,KNN,Tem jogo,2026-05-02T20:40:38.639206
+0,0,-1,0,-1,1,0,1,0,Tem jogo,KNN,O venceu,2026-05-02T20:40:38.687288
+1,1,-1,-1,-1,1,1,1,-1,Empate,KNN,Tem jogo,2026-05-02T20:40:38.692034
+0,1,1,-1,1,0,-1,0,-1,Tem jogo,KNN,O venceu,2026-05-02T20:40:38.742774
+0,0,1,1,0,0,0,-1,0,Tem jogo,KNN,O venceu,2026-05-02T20:40:38.766372
+0,0,1,1,0,0,0,-1,-1,Tem jogo,KNN,O venceu,2026-05-02T20:40:38.767857
+1,0,1,1,0,0,0,-1,-1,Tem jogo,KNN,X venceu,2026-05-02T20:40:38.769167
+1,0,1,1,-1,0,0,-1,-1,Tem jogo,KNN,O venceu,2026-05-02T20:40:38.770413
+-1,-1,1,0,1,-1,0,1,1,Tem jogo,KNN,X venceu,2026-05-02T20:40:38.797663
+-1,-1,1,-1,1,-1,0,1,1,Tem jogo,KNN,X venceu,2026-05-02T20:40:38.799411
+0,-1,1,-1,1,0,0,0,1,Tem jogo,KNN,X venceu,2026-05-02T20:40:38.825005
+0,-1,-1,1,0,1,1,-1,0,Tem jogo,KNN,O venceu,2026-05-02T20:40:38.851765
+0,0,0,0,-1,0,1,1,0,Tem jogo,KNN,X venceu,2026-05-02T20:40:38.900674
+0,1,-1,-1,0,0,-1,1,1,Tem jogo,KNN,O venceu,2026-05-02T20:40:38.957696
+1,1,-1,-1,0,0,-1,1,1,Tem jogo,KNN,X venceu,2026-05-02T20:40:38.959125
+1,0,0,0,-1,0,0,-1,1,Tem jogo,KNN,O venceu,2026-05-02T20:40:38.985212
+1,0,0,1,0,0,0,-1,0,Tem jogo,KNN,X venceu,2026-05-02T20:40:39.010010
+1,0,1,1,-1,0,0,-1,0,Tem jogo,KNN,X venceu,2026-05-02T20:40:39.012338
+1,0,1,1,-1,-1,0,-1,1,Tem jogo,KNN,X venceu,2026-05-02T20:40:39.014762
+1,0,1,1,-1,-1,-1,-1,1,Tem jogo,KNN,X venceu,2026-05-02T20:40:39.016083
+0,0,0,1,0,1,-1,0,-1,Tem jogo,KNN,O venceu,2026-05-02T20:40:39.040118
+0,1,-1,1,0,1,-1,1,-1,Tem jogo,KNN,X venceu,2026-05-02T20:40:39.067358
+1,0,0,0,1,1,-1,-1,0,Tem jogo,KNN,X venceu,2026-05-02T20:40:39.093501
+1,0,-1,0,-1,0,0,1,0,Tem jogo,KNN,O venceu,2026-05-02T20:40:39.118234
+1,0,-1,0,-1,0,0,1,1,Tem jogo,KNN,X venceu,2026-05-02T20:40:39.119642
+-1,0,1,0,-1,0,0,1,1,Tem jogo,KNN,X venceu,2026-05-02T20:40:39.145219
+1,1,0,0,0,0,-1,1,-1,Tem jogo,KNN,X venceu,2026-05-02T20:40:39.172971
+0,1,0,1,-1,-1,1,0,-1,Tem jogo,KNN,O venceu,2026-05-02T20:40:39.200508
+0,1,0,1,-1,-1,1,1,-1,Tem jogo,KNN,O venceu,2026-05-02T20:40:39.201914
+-1,1,1,0,0,0,-1,0,0,Tem jogo,KNN,O venceu,2026-05-02T20:40:39.226284
+-1,1,1,0,1,0,-1,0,0,Tem jogo,KNN,O venceu,2026-05-02T20:40:39.227659
+0,-1,0,-1,0,1,0,1,1,Tem jogo,KNN,X venceu,2026-05-02T20:40:39.280671
+1,-1,-1,-1,-1,1,0,1,1,Tem jogo,KNN,X venceu,2026-05-02T20:40:39.283773
+1,-1,-1,-1,1,1,-1,1,0,Tem jogo,KNN,X venceu,2026-05-02T20:40:39.339410
+1,0,0,0,-1,0,0,-1,1,Tem jogo,KNN,O venceu,2026-05-02T20:40:39.365563
+1,0,-1,0,-1,1,0,-1,1,Tem jogo,KNN,O venceu,2026-05-02T20:40:39.367776
+1,1,-1,-1,-1,1,1,-1,1,Empate,KNN,Tem jogo,2026-05-02T20:40:39.370698
+0,0,0,0,-1,1,-1,1,1,Tem jogo,KNN,X venceu,2026-05-02T20:40:39.430797
+0,0,0,-1,-1,1,-1,1,1,Tem jogo,KNN,O venceu,2026-05-02T20:40:39.432249
+1,1,-1,-1,-1,1,1,1,-1,Empate,KNN,Tem jogo,2026-05-02T20:40:39.462790
+-1,-1,1,1,-1,0,-1,1,1,Tem jogo,KNN,X venceu,2026-05-02T20:40:39.490798
+-1,1,1,-1,1,0,0,0,0,Tem jogo,KNN,X venceu,2026-05-02T20:40:39.517336
+-1,1,1,-1,1,0,0,-1,0,Tem jogo,KNN,O venceu,2026-05-02T20:40:39.518745
+-1,1,1,-1,1,0,0,-1,1,Tem jogo,KNN,X venceu,2026-05-02T20:40:39.519992
+-1,1,1,-1,1,-1,0,-1,1,Tem jogo,KNN,X venceu,2026-05-02T20:40:39.521255
+1,0,1,-1,-1,0,0,0,1,Tem jogo,KNN,X venceu,2026-05-02T20:40:39.547689
+1,0,1,-1,-1,0,0,-1,1,Tem jogo,KNN,O venceu,2026-05-02T20:40:39.549179
+1,0,0,1,0,1,0,-1,-1,Tem jogo,KNN,X venceu,2026-05-02T20:40:39.575819
+1,1,-1,1,0,1,0,-1,-1,Tem jogo,KNN,X venceu,2026-05-02T20:40:39.578049
+0,0,1,1,-1,0,0,0,-1,Tem jogo,KNN,O venceu,2026-05-02T20:40:39.603438
+0,0,1,1,-1,1,0,-1,-1,Tem jogo,KNN,O venceu,2026-05-02T20:40:39.605971
+0,1,1,1,-1,1,0,-1,-1,Tem jogo,KNN,O venceu,2026-05-02T20:40:39.607361
+0,1,0,-1,1,0,-1,0,1,Tem jogo,KNN,X venceu,2026-05-02T20:40:39.659108
+-1,0,0,0,1,0,1,1,-1,Tem jogo,KNN,X venceu,2026-05-02T20:40:39.686332
+-1,0,-1,0,1,0,1,1,-1,Tem jogo,KNN,O venceu,2026-05-02T20:40:39.687741
+-1,0,-1,0,1,1,1,1,-1,Tem jogo,KNN,X venceu,2026-05-02T20:40:39.689368
+-1,0,-1,-1,1,1,1,1,-1,Tem jogo,KNN,X venceu,2026-05-02T20:40:39.690794
+0,-1,-1,0,1,-1,1,1,0,Tem jogo,KNN,O venceu,2026-05-02T20:40:39.718916
+-1,-1,1,-1,1,0,0,1,0,Tem jogo,KNN,O venceu,2026-05-02T20:40:39.773214
+1,0,1,0,0,-1,-1,0,1,Tem jogo,KNN,X venceu,2026-05-02T20:40:39.848941
+1,0,1,-1,0,-1,-1,0,1,Tem jogo,KNN,X venceu,2026-05-02T20:40:39.850478
+1,1,0,-1,1,-1,1,-1,0,Tem jogo,KNN,X venceu,2026-05-02T20:40:39.881476
+1,1,0,-1,0,-1,-1,1,1,Tem jogo,KNN,X venceu,2026-05-02T20:40:39.911317
+1,0,0,1,0,0,0,-1,0,Tem jogo,KNN,X venceu,2026-05-02T20:40:39.972985
+1,-1,0,1,1,0,0,-1,0,Tem jogo,KNN,X venceu,2026-05-02T20:40:39.975380
+-1,0,0,0,1,0,1,0,0,Tem jogo,KNN,X venceu,2026-05-02T20:40:40.031596
+-1,1,0,0,1,-1,1,0,0,Tem jogo,KNN,X venceu,2026-05-02T20:40:40.033893
+-1,1,0,0,1,-1,1,-1,0,Tem jogo,KNN,X venceu,2026-05-02T20:40:40.035189
+-1,1,-1,1,1,-1,1,-1,1,Empate,KNN,Tem jogo,2026-05-02T20:40:40.038088
+0,1,1,1,0,-1,1,-1,-1,Tem jogo,KNN,X venceu,2026-05-02T20:40:40.066440
+0,1,1,1,-1,-1,1,-1,-1,Tem jogo,KNN,X venceu,2026-05-02T20:40:40.067862
+-1,1,1,1,1,-1,-1,-1,1,Empate,KNN,Tem jogo,2026-05-02T20:40:40.098219
+1,-1,1,1,-1,1,-1,1,-1,Empate,KNN,Tem jogo,2026-05-02T20:40:40.128635
+0,0,1,-1,1,0,-1,0,1,Tem jogo,KNN,X venceu,2026-05-02T20:40:40.155323
+0,1,1,-1,1,0,-1,-1,1,Tem jogo,KNN,O venceu,2026-05-02T20:40:40.157697
+-1,1,1,1,1,-1,-1,-1,1,Empate,KNN,Tem jogo,2026-05-02T20:40:40.188880
+-1,-1,1,0,-1,1,1,0,0,Tem jogo,KNN,O venceu,2026-05-02T20:40:40.216785
+-1,1,1,-1,1,1,0,0,-1,Tem jogo,KNN,X venceu,2026-05-02T20:40:40.248057
+1,1,0,1,-1,0,0,-1,0,Tem jogo,KNN,X venceu,2026-05-02T20:40:40.275888
+1,-1,-1,-1,0,1,1,0,1,Tem jogo,KNN,X venceu,2026-05-02T20:40:40.306447
+-1,0,1,0,0,1,0,0,-1,Tem jogo,KNN,O venceu,2026-05-02T20:40:40.364040
+-1,1,1,0,0,1,0,-1,-1,Tem jogo,KNN,O venceu,2026-05-02T20:40:40.366493
+-1,1,1,0,1,1,0,-1,-1,Tem jogo,KNN,X venceu,2026-05-02T20:40:40.367819
+0,-1,0,0,1,1,1,-1,0,Tem jogo,KNN,X venceu,2026-05-02T20:40:40.396052
+0,-1,-1,0,1,1,1,-1,1,Tem jogo,KNN,X venceu,2026-05-02T20:40:40.398551
+1,-1,-1,1,0,1,0,0,0,Tem jogo,KNN,X venceu,2026-05-02T20:40:40.455892
+0,-1,1,0,-1,0,0,1,1,Tem jogo,KNN,X venceu,2026-05-02T20:40:40.485892
+0,-1,1,-1,1,0,-1,1,0,Tem jogo,KNN,O venceu,2026-05-02T20:40:40.516169
+1,-1,1,-1,1,1,-1,1,-1,Empate,KNN,Tem jogo,2026-05-02T20:40:40.519280
+1,1,-1,-1,1,1,1,-1,-1,Empate,KNN,Tem jogo,2026-05-02T20:40:40.550327
+0,1,1,1,-1,0,-1,-1,1,Tem jogo,KNN,X venceu,2026-05-02T20:40:40.683067
+0,0,-1,0,0,0,0,1,1,Tem jogo,KNN,X venceu,2026-05-02T20:40:40.738856
+1,0,0,1,0,0,0,-1,0,Tem jogo,KNN,X venceu,2026-05-02T20:40:40.826933
+1,0,1,1,0,0,0,-1,-1,Tem jogo,KNN,X venceu,2026-05-02T20:40:40.829510
+1,0,1,1,-1,0,0,-1,-1,Tem jogo,KNN,O venceu,2026-05-02T20:40:40.830971
+1,0,1,1,-1,1,0,-1,-1,Tem jogo,KNN,X venceu,2026-05-02T20:40:40.832250
+0,-1,0,1,-1,1,-1,0,1,Tem jogo,KNN,O venceu,2026-05-02T20:40:40.862040
+1,0,0,1,-1,0,-1,1,0,Tem jogo,KNN,O venceu,2026-05-02T20:40:40.920474
+1,0,-1,0,0,0,-1,1,0,Tem jogo,KNN,O venceu,2026-05-02T20:40:40.977613
+0,0,0,0,1,1,-1,0,0,Tem jogo,KNN,X venceu,2026-05-02T20:40:41.091925
+0,1,1,0,-1,-1,0,1,0,Tem jogo,KNN,O venceu,2026-05-02T20:40:41.123890
+0,0,1,0,1,-1,0,0,0,Tem jogo,KNN,X venceu,2026-05-02T20:40:41.154166
+-1,0,1,0,1,-1,0,1,0,Tem jogo,KNN,X venceu,2026-05-02T20:40:41.156655
+-1,0,1,-1,1,-1,0,1,1,Tem jogo,KNN,X venceu,2026-05-02T20:40:41.158787
+-1,-1,1,-1,1,-1,0,1,1,Tem jogo,KNN,X venceu,2026-05-02T20:40:41.160042
+-1,1,-1,1,1,-1,1,-1,1,Empate,KNN,Tem jogo,2026-05-02T20:40:41.224009
+1,-1,1,-1,1,1,-1,1,-1,Empate,KNN,Tem jogo,2026-05-02T20:40:41.317920
+1,0,1,0,-1,-1,1,0,0,Tem jogo,KNN,X venceu,2026-05-02T20:40:41.347047
+0,0,-1,0,0,0,1,1,0,Tem jogo,KNN,X venceu,2026-05-02T20:40:41.375917
+1,0,-1,-1,0,0,1,1,0,Tem jogo,KNN,X venceu,2026-05-02T20:40:41.378248
+1,1,-1,-1,-1,1,1,1,-1,Empate,KNN,Tem jogo,2026-05-02T20:40:41.381958
+0,0,1,0,-1,0,0,1,-1,Tem jogo,KNN,O venceu,2026-05-02T20:40:41.409882
+0,1,1,-1,1,-1,-1,0,1,Tem jogo,MLP,X venceu,2026-05-02T20:41:47.989690
+0,1,1,-1,1,-1,-1,-1,1,Tem jogo,MLP,O venceu,2026-05-02T20:41:47.991604
+-1,0,1,1,1,-1,0,-1,1,Tem jogo,MLP,Empate,2026-05-02T20:41:48.051571
+-1,1,-1,-1,1,1,1,-1,1,Empate,MLP,Tem jogo,2026-05-02T20:41:48.084076
+0,-1,1,1,0,1,-1,-1,0,Tem jogo,MLP,O venceu,2026-05-02T20:41:48.169226
+-1,-1,1,-1,-1,1,1,1,0,Tem jogo,MLP,O venceu,2026-05-02T20:41:48.200693
+1,0,-1,-1,-1,1,1,1,0,Tem jogo,MLP,Empate,2026-05-02T20:41:48.231216
+1,-1,-1,-1,-1,1,1,1,0,Tem jogo,MLP,Empate,2026-05-02T20:41:48.232433
+-1,1,1,1,-1,-1,1,-1,1,Empate,MLP,Tem jogo,2026-05-02T20:41:48.709969
+1,1,0,0,1,-1,1,-1,-1,Tem jogo,MLP,X venceu,2026-05-02T20:41:48.895215
+0,1,1,-1,0,-1,-1,0,1,Tem jogo,MLP,O venceu,2026-05-02T20:41:48.926308
+-1,0,1,-1,-1,0,0,1,1,Tem jogo,MLP,O venceu,2026-05-02T20:41:49.000094
+-1,1,1,-1,-1,0,0,1,1,Tem jogo,MLP,X venceu,2026-05-02T20:41:49.001565
+1,-1,-1,0,-1,1,1,1,0,Tem jogo,MLP,Empate,2026-05-02T20:41:49.161306
+1,-1,-1,-1,-1,1,1,1,0,Tem jogo,MLP,Empate,2026-05-02T20:41:49.162548
+-1,1,-1,0,1,-1,1,0,1,Tem jogo,MLP,X venceu,2026-05-02T20:41:50.154708
+-1,1,-1,0,1,-1,1,-1,1,Tem jogo,MLP,Empate,2026-05-02T20:41:50.155949
+1,1,-1,-1,0,-1,0,1,1,Tem jogo,MLP,X venceu,2026-05-02T20:41:50.355656
+1,1,-1,-1,-1,1,1,-1,0,Tem jogo,MLP,Empate,2026-05-02T20:41:50.609479
+-1,-1,0,-1,1,1,0,1,1,Tem jogo,MLP,X venceu,2026-05-02T20:41:50.987499
+0,1,1,-1,-1,1,-1,1,-1,Tem jogo,MLP_Extra_Feature,O venceu,2026-05-02T20:53:58.096650
+1,1,-1,0,-1,-1,1,1,0,Tem jogo,MLP_Extra_Feature,X venceu,2026-05-02T20:53:58.171209
+0,1,1,-1,0,-1,-1,1,1,Tem jogo,MLP_Extra_Feature,X venceu,2026-05-02T20:53:59.549144
+0,1,1,-1,-1,1,-1,1,-1,Tem jogo,MLP_Extra_Feature,O venceu,2026-05-02T20:54:00.596015
+1,-1,1,1,0,1,0,-1,-1,Tem jogo,MLP_Extra_Feature,X venceu,2026-05-02T20:54:00.915155
+-1,1,0,1,1,-1,0,-1,1,Tem jogo,MLP,Empate,2026-05-02T20:54:09.591880
+-1,1,0,1,1,-1,-1,-1,1,Tem jogo,MLP,Empate,2026-05-02T20:54:09.593118
+1,1,0,-1,0,-1,1,1,-1,Tem jogo,MLP,X venceu,2026-05-02T20:54:09.672017
+1,0,1,-1,-1,1,0,-1,0,Tem jogo,MLP,O venceu,2026-05-02T20:54:09.788395
+1,0,1,-1,-1,1,1,-1,0,Tem jogo,MLP,X venceu,2026-05-02T20:54:09.789590
+-1,1,1,1,-1,-1,-1,1,0,Tem jogo,MLP,Empate,2026-05-02T20:54:09.830534
+-1,1,1,0,0,-1,-1,1,1,Tem jogo,MLP,Empate,2026-05-02T20:54:09.871078
+-1,1,1,0,-1,-1,-1,1,1,Tem jogo,MLP,Empate,2026-05-02T20:54:09.872468
+0,-1,1,1,0,-1,-1,1,1,Tem jogo,MLP,Empate,2026-05-02T20:54:09.992543
+0,-1,1,1,-1,-1,-1,1,1,Tem jogo,MLP,Empate,2026-05-02T20:54:09.993691
+-1,1,1,1,-1,-1,1,-1,1,Empate,MLP,Tem jogo,2026-05-02T20:54:10.113156
+0,1,1,-1,1,-1,-1,-1,1,Tem jogo,MLP,O venceu,2026-05-02T20:54:10.192892
+0,1,1,1,1,-1,-1,0,-1,Tem jogo,MLP,X venceu,2026-05-02T20:54:10.393347
+-1,1,-1,-1,1,0,1,0,1,Tem jogo,MLP,X venceu,2026-05-02T20:54:10.514212
+-1,1,-1,-1,1,1,1,-1,1,Empate,MLP,Tem jogo,2026-05-02T20:54:10.516016
+-1,1,1,0,-1,-1,-1,1,1,Tem jogo,MLP,Empate,2026-05-02T20:54:10.927083
+1,1,-1,0,-1,1,1,0,-1,Tem jogo,MLP,Empate,2026-05-02T20:54:11.296802
+0,0,1,1,-1,1,-1,-1,0,Tem jogo,MLP,O venceu,2026-05-02T20:54:11.380913
+1,0,1,1,-1,1,-1,-1,0,Tem jogo,MLP,O venceu,2026-05-02T20:54:11.382016
+0,-1,-1,1,-1,1,0,0,1,Tem jogo,MLP,O venceu,2026-05-02T20:54:11.423708
+0,-1,-1,1,-1,1,1,0,1,Tem jogo,MLP,X venceu,2026-05-02T20:54:11.424888
+-1,0,-1,-1,0,1,0,1,1,Tem jogo,MLP,O venceu,2026-05-02T20:54:11.637146
+0,1,1,-1,1,0,-1,-1,1,Tem jogo,MLP,X venceu,2026-05-02T20:54:11.807060
+0,1,1,-1,1,-1,-1,-1,1,Tem jogo,MLP,O venceu,2026-05-02T20:54:11.808216
+1,0,1,1,1,-1,0,-1,-1,Tem jogo,MLP,X venceu,2026-05-02T20:54:12.107082
+1,-1,-1,0,-1,1,1,1,0,Tem jogo,MLP,Empate,2026-05-02T20:54:12.804725
+1,-1,-1,-1,-1,1,1,1,0,Tem jogo,MLP,Empate,2026-05-02T20:54:12.806118
+0,1,1,-1,1,-1,0,-1,1,Tem jogo,MLP,X venceu,2026-05-02T20:54:13.423003
+0,1,1,-1,1,-1,-1,-1,1,Tem jogo,MLP,O venceu,2026-05-02T20:54:13.424251
+1,1,-1,-1,1,1,1,-1,-1,Empate,MLP,Tem jogo,2026-05-02T20:54:13.514591
+-1,1,-1,0,1,-1,1,0,1,Tem jogo,MLP,X venceu,2026-05-02T20:54:13.691232
+-1,1,-1,0,1,-1,1,-1,1,Tem jogo,MLP,Empate,2026-05-02T20:54:13.692682
+-1,0,-1,-1,1,0,0,1,1,Tem jogo,MLP_Extra_Feature,O venceu,2026-05-02T20:57:40.353113
+-1,0,-1,-1,1,1,0,1,1,Tem jogo,MLP_Extra_Feature,X venceu,2026-05-02T20:57:40.356851
+1,0,1,0,-1,1,-1,-1,0,Tem jogo,MLP_Extra_Feature,O venceu,2026-05-02T20:57:42.790100
+-1,0,-1,-1,1,0,0,1,1,Tem jogo,MLP_Extra_Feature,O venceu,2026-05-02T20:57:43.416891
+1,0,1,1,1,-1,0,-1,-1,Tem jogo,MLP_Extra_Feature,X venceu,2026-05-02T20:57:44.301031
+0,-1,-1,1,-1,0,1,0,1,Tem jogo,MLP_Extra_Feature,O venceu,2026-05-02T20:57:45.403266
+-1,-1,0,0,1,1,-1,1,1,Tem jogo,MLP_Extra_Feature,X venceu,2026-05-02T20:57:45.661241
+0,1,1,-1,-1,0,-1,1,1,Tem jogo,MLP_Extra_Feature,X venceu,2026-05-02T20:57:46.070424
+-1,1,-1,0,1,1,-1,0,1,Tem jogo,MLP_Extra_Feature,X venceu,2026-05-02T20:57:48.239540
+1,1,-1,0,-1,-1,1,1,0,Tem jogo,MLP_Extra_Feature,X venceu,2026-05-02T20:57:49.013005
+-1,-1,1,-1,1,0,0,1,1,Tem jogo,MLP_Extra_Feature,X venceu,2026-05-02T20:57:50.342301
+1,1,-1,0,-1,-1,1,0,1,Tem jogo,MLP_Extra_Feature,X venceu,2026-05-02T20:57:50.456912
+1,0,1,1,-1,1,0,-1,-1,Tem jogo,MLP_Extra_Feature,X venceu,2026-05-02T20:57:50.910978
+1,1,-1,1,-1,1,0,-1,-1,Tem jogo,MLP_Extra_Feature,O venceu,2026-05-02T20:57:51.025919
+-1,-1,0,0,1,1,-1,1,1,Tem jogo,MLP_Extra_Feature,X venceu,2026-05-02T20:57:52.603149
+0,1,1,-1,-1,0,-1,0,1,Tem jogo,MLP_Extra_Feature,O venceu,2026-05-02T20:57:55.555541
+1,1,0,0,-1,-1,1,1,-1,Tem jogo,MLP_Extra_Feature,X venceu,2026-05-02T20:57:55.878372
+1,1,0,1,1,-1,0,-1,-1,Tem jogo,MLP_Extra_Feature,X venceu,2026-05-02T20:57:55.943103
+1,0,1,1,-1,1,0,-1,-1,Tem jogo,MLP_Extra_Feature,X venceu,2026-05-02T20:57:57.749262
+-1,1,1,1,-1,1,-1,-1,0,Tem jogo,MLP_Extra_Feature,O venceu,2026-05-02T20:57:58.441017
+-1,-1,0,-1,1,1,0,1,1,Tem jogo,MLP_Extra_Feature,X venceu,2026-05-02T20:57:59.620451
+1,1,0,0,-1,-1,1,1,-1,Tem jogo,MLP_Extra_Feature,X venceu,2026-05-02T20:57:59.810555
+1,-1,1,1,0,1,0,-1,-1,Tem jogo,MLP_Extra_Feature,X venceu,2026-05-02T20:58:01.699078
+0,-1,-1,0,1,1,-1,1,1,Tem jogo,MLP_Extra_Feature,X venceu,2026-05-02T20:58:02.433737
+0,0,1,1,-1,1,0,-1,-1,Tem jogo,MLP_Extra_Feature,O venceu,2026-05-02T20:58:03.610181
+0,1,1,-1,1,-1,0,-1,1,Tem jogo,MLP_Extra_Feature,X venceu,2026-05-02T20:58:03.678478
+1,0,-1,0,-1,-1,1,1,0,Tem jogo,MLP_Extra_Feature,O venceu,2026-05-02T20:58:04.562222
+0,1,1,-1,0,-1,1,-1,1,Tem jogo,MLP_Extra_Feature,X venceu,2026-05-02T20:58:04.837362
+-1,1,1,1,-1,1,-1,-1,0,Tem jogo,MLP_Extra_Feature,O venceu,2026-05-02T20:58:05.874011
+1,-1,1,1,0,1,-1,-1,0,Tem jogo,MLP_Extra_Feature,X venceu,2026-05-02T20:58:06.082856
