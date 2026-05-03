@@ -2,7 +2,6 @@
 
 **Disciplina:** PUCRS — Inteligência Artificial
 **Professora:** Silvia Moraes
-**Código de identificação:** t32
 
 ---
 
@@ -240,6 +239,12 @@ df['tabuleiro_completo'] = (
 ```
 
 Com a entrada estendida para 10 features e a *mesma* busca de hiperparâmetros do MLP base, o modelo converge para a mesma arquitetura `(256, 128, 64)` mas com a fronteira `Tem jogo` × `Empate` agora trivialmente linear sobre a nova dimensão. O resultado, reportado na Seção 5, é uma MLP que praticamente zera os erros nas quatro classes.
+
+A Figura 6 ilustra graficamente o efeito da intervenção sobre as duas classes problemáticas. À esquerda, a projeção 2D no plano `(max_soma, min_soma)` — restringida apenas a `Tem jogo` e `Empate` — evidencia a sobreposição total: os 32 empates caem exatamente sobre o mesmo conjunto de coordenadas dos 626 estados intermediários, sem qualquer margem de separação possível. À direita, a mesma nuvem é elevada ao espaço 3D pela adição de `tabuleiro_completo` como terceiro eixo. Como a feature é determinística (todos os empates têm `tabuleiro_completo = 1` e todos os Tem jogo têm `tabuleiro_completo = 0`, sem ruído), as duas classes se acomodam em **planos paralelos disjuntos** separados por uma distância vertical fixa de 1 unidade. Qualquer hiperplano `tabuleiro_completo = 0,5` (esboçado em cinza no painel) classifica corretamente 100 % das amostras das duas classes.
+
+![Antes/depois: efeito de tabuleiro_completo na separação Tem jogo × Empate](docs/visualizations/fig_tabuleiro_completo.png)
+
+*Figura 6 — Painel esquerdo (antes): apenas as classes `Tem jogo` (verde) e `Empate` (amarelo) projetadas em `(max_soma, min_soma)` mostram sobreposição perfeita. Painel direito (depois): a inclusão do eixo `tabuleiro_completo` separa as classes em dois planos horizontais sem margem de erro. O plano cinza tracejado em `z = 0,5` representa um possível hiperplano de decisão linear.*
 
 **Nota sobre validade.** A feature `tabuleiro_completo` é uma transformação determinística das nove entradas originais — não introduz informação externa nem rótulo disfarçado, apenas pré-computa uma combinação não-linear que a rede teria de aprender por si só. Trata-se de feature engineering legítima sob qualquer manual clássico de ML. Ainda assim, este modelo é apresentado aqui como **estudo exploratório** e não substitui o XGBoost como campeão oficial: a comparação entre os seis algoritmos da Seção 5 é feita estritamente sobre as nove features brutas para preservar uma base de comparação uniforme. O MLP_Extra_Feature serve, portanto, como demonstração de que o teto de desempenho neste problema está limitado pela representação, não pelo classificador.
 
