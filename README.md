@@ -8,7 +8,7 @@
 
 ## Resumo
 
-Este trabalho apresenta um sistema de classificação supervisionada para o jogo da velha cuja função é, dado um tabuleiro 3×3 em qualquer estado, determinar se o jogo está em andamento, terminou em vitória de X, em vitória de O, ou em empate. O ponto de partida é o *UCI Tic-Tac-Toe Endgame Dataset*, que contém apenas configurações finais distribuídas em três classes desbalanceadas. Para atender ao enunciado, que exige a classificação em quatro classes (incluindo `Tem jogo`), o conjunto foi expandido por meio de duas estratégias: espelhamento aritmético dos empates e geração validada de estados intermediários por engenharia reversa. O resultado é um dataset de 1.600 amostras numéricas, dividido fisicamente em treino, validação e teste com estratificação por classe. Foram treinados, validados e avaliados seis algoritmos clássicos: k-NN, Árvore de Decisão, MLP, Random Forest, SVM e XGBoost. Em conjunto com a etapa de modelagem, foi desenvolvida uma aplicação Streamlit que permite jogar contra um bot aleatório enquanto qualquer um dos modelos atua como analista em tempo real, registrando histórico, simulações em massa e correções para retreinamento futuro. O melhor modelo no conjunto de teste foi o XGBoost (99,17 % de acurácia, F1-macro = 0,935).
+Este trabalho apresenta um sistema de classificação supervisionada para o jogo da velha cuja função é, dado um tabuleiro 3×3 em qualquer estado, determinar se o jogo está em andamento, terminou em vitória de X, em vitória de O, ou em empate. O ponto de partida é o *UCI Tic-Tac-Toe Endgame Dataset*, que contém apenas configurações finais distribuídas em três classes desbalanceadas. Para atender ao enunciado, que exige a classificação em quatro classes (incluindo `Tem jogo`), o conjunto foi expandido por meio de duas estratégias: espelhamento aritmético dos empates e geração validada de estados intermediários por engenharia reversa. O resultado é um dataset de 1.600 amostras numéricas, dividido fisicamente em treino, validação e teste com estratificação por classe. Foram treinados, validados e avaliados seis algoritmos clássicos: k-NN, Árvore de Decisão, MLP, Random Forest, SVM e XGBoost. Em conjunto com a etapa de modelagem, foi desenvolvida uma aplicação Streamlit que permite jogar contra um bot aleatório enquanto qualquer um dos modelos atua como analista em tempo real, registrando histórico, simulações em massa e correções para retreinamento futuro. O melhor modelo no conjunto de teste, sob a base uniforme de nove features brutas, foi o **XGBoost (99,17 % de acurácia, F1-macro = 0,935)**. Adicionalmente, foi conduzido um estudo exploratório com uma MLP enriquecida por uma feature derivada (`tabuleiro_completo`) que isola a fronteira `Tem jogo` × `Empate` — descrito na Seção 4.7 — empatando o XGBoost em acurácia (99,17 %) e superando-o em F1-macro (0,993 vs 0,935), mas reportado como análise complementar e não como vencedor da comparação principal.
 
 ---
 
@@ -45,6 +45,30 @@ Dois problemas saltaram dessa análise:
 1. **Classe ausente.** O dataset cobre apenas estados de fim de jogo, portanto a classe `Tem jogo` (estados intermediários, com pelo menos uma célula vazia e nenhum vencedor) não existe nele.
 2. **Severo desbalanceamento.** A classe `Empate`, com 16 amostras, é vinte vezes menor que `X venceu`. Isso, combinado com uma divisão treino/validação/teste, deixa pouquíssimas amostras de empate no conjunto de teste e prejudica métricas dependentes da classe minoritária.
 
+### 2.3 Geometria das Classes em Projeções de Baixa Dimensão
+
+O espaço de entrada tem nove dimensões (uma por casa do tabuleiro), inviável de visualizar diretamente. Para inspecionar a separabilidade das quatro classes, foram construídas projeções determinísticas das nove posições em espaços de menor dimensão, usando combinações lineares que correspondem às oito linhas vencedoras do jogo (3 linhas, 3 colunas, 2 diagonais). Cada uma dessas combinações é uma soma simples — por exemplo, `soma_col_1 = pos_1 + pos_4 + pos_7` — e seu domínio é `{−3, −2, −1, 0, 1, 2, 3}`.
+
+A Figura 1 mostra o conjunto de 1.600 amostras projetado nas três somas de colunas. A escala simétrica das casas (X = +1, O = −1, vazia = 0) faz com que o sinal da coordenada acompanhe a maioria de marcas naquela coluna, e o módulo extremo (±3) corresponda a uma coluna integralmente preenchida pelo mesmo jogador, ou seja, uma vitória por aquela coluna.
+
+![Projeção 3D das classes nas somas das três colunas](docs/visualizations/fig_3d_colunas.png)
+
+*Figura 1 — Cada ponto é uma amostra do dataset, levemente perturbada por jitter para visualizar sobreposições. Pontos azuis (X venceu) tendem a se acumular em coordenadas com algum eixo igual a +3; pontos vermelhos (O venceu) se acumulam nos eixos a −3. Pontos verdes (Tem jogo) e amarelos (Empate) ficam confinados ao miolo do cubo, sem nunca tocar as faces extremas.*
+
+A Figura 2 repete a análise para as três somas de linhas. O padrão é equivalente, mas as amostras que aparecem nas faces ±3 aqui são *outras*: vitórias por linha, e não por coluna. Vitórias por diagonal não aparecem como ±3 em nenhuma das duas projeções — daí a Figura 3, que agrega as oito linhas vencedoras simultaneamente.
+
+![Projeção 3D das classes nas somas das três linhas](docs/visualizations/fig_3d_linhas.png)
+
+*Figura 2 — Mesma construção da Figura 1, agora com as somas das três linhas horizontais do tabuleiro. Note que uma vitória por coluna que aparece nas faces da Figura 1 cai no miolo da Figura 2, e vice-versa. Vitórias por diagonal nunca aparecem em nenhuma das duas projeções.*
+
+A Figura 3 sintetiza toda a estrutura do problema em apenas duas dimensões: o **maior** e o **menor** valor entre as oito somas de linhas vencedoras. Essas duas estatísticas capturam, respectivamente, o quão perto o jogador X está de vencer (`max_soma`) e o quão perto O está (`min_soma`). É uma representação minimalista, mas geometricamente completa para o problema de detectar vitórias.
+
+![Projeção 2D agregada: máxima e mínima entre as 8 somas vencedoras](docs/visualizations/fig_2d_max_min.png)
+
+*Figura 3 — As classes se distribuem em três regiões disjuntas: a coluna vertical em `max=3` (vitórias de X, qualquer que seja a linha vencedora), a faixa horizontal em `min=−3` (vitórias de O), e o quadrado central onde nenhuma soma atinge ±3. Tem jogo (verde) e Empate (amarelo) ocupam *exatamente* as mesmas células desse quadrado, sem qualquer margem de separação nessa projeção.*
+
+Três observações estruturais saltam da Figura 3 e direcionam o restante do trabalho. **Primeiro**, as classes `X venceu` e `O venceu` são linearmente separáveis das demais — qualquer modelo que internalize as oito somas vencedoras as classifica trivialmente. **Segundo**, todas as 626 amostras de `X venceu` têm `max_soma = 3` e todas as 316 amostras de `O venceu` têm `min_soma = −3`, sem exceção; isso explica por que mesmo classificadores simples como o k-NN atingem ~80 % de acurácia neste dataset. **Terceiro, e mais importante**, `Tem jogo` e `Empate` se sobrepõem perfeitamente no quadrado central — não há nenhuma combinação linear das nove posições que os separe usando apenas o critério de "linhas vencedoras". A única dimensão ortogonal capaz de distingui-los é a **completude do tabuleiro** (`Empate` tem todas as nove casas preenchidas; `Tem jogo` tem ao menos uma vazia). Essa observação é a motivação direta do estudo exploratório descrito na Seção 4.7, onde uma feature explícita `tabuleiro_completo` é adicionada à entrada da MLP.
+
 ---
 
 ## 3. Preparação dos Dados
@@ -77,17 +101,17 @@ A criação da classe ausente foi implementada por engenharia reversa. Para cada
 4. Verifica-se a *validade do turno*: a soma das células deve ser 0 ou 1. Como X joga primeiro e cada jogador alterna turnos, em qualquer estado intermediário válido o número de X é igual ao de O (soma 0) ou maior em uma unidade (soma 1). Configurações com soma 2 (X jogou duas vezes seguidas) ou negativa (O jogou primeiro) são impossíveis em uma partida real e são descartadas.
 5. A configuração aprovada nos dois testes é rotulada como `Tem jogo`.
 
-A Figura 1 ilustra o pipeline aplicado a três candidatos derivados do mesmo estado final. À esquerda, um candidato é aceito (passa nas duas validações). No centro, um candidato é rejeitado pela Validação 1 porque a vitória da linha superior persiste mesmo após a remoção das peças sorteadas. À direita, um candidato é rejeitado pela Validação 2 porque o saldo de peças (2 X contra 4 O) é impossível em uma partida real onde X joga primeiro.
+A Figura 4 ilustra o pipeline aplicado a três candidatos derivados do mesmo estado final. À esquerda, um candidato é aceito (passa nas duas validações). No centro, um candidato é rejeitado pela Validação 1 porque a vitória da linha superior persiste mesmo após a remoção das peças sorteadas. À direita, um candidato é rejeitado pela Validação 2 porque o saldo de peças (2 X contra 4 O) é impossível em uma partida real onde X joga primeiro.
 
 ![Processo de geração e validação dos estados intermediários](docs/images/fig_geracao_estados.svg)
 
-*Figura 1 — Aplicação das duas validações sobre três candidatos sorteados a partir do mesmo estado final. As células em amarelo tracejado indicam as posições removidas pelo sorteio. A linha vermelha no painel central destaca a vitória que sobreviveu à remoção.*
+*Figura 4 — Aplicação das duas validações sobre três candidatos sorteados a partir do mesmo estado final. As células em amarelo tracejado indicam as posições removidas pelo sorteio. A linha vermelha no painel central destaca a vitória que sobreviveu à remoção.*
 
-O processo é repetido várias vezes por amostra original — cada sorteio independente de *k* e de quais peças remover produz uma amostra `Tem jogo` distinta. A Figura 2 mostra quatro saídas válidas obtidas a partir do mesmo endgame, evidenciando como uma única configuração final pode se desdobrar em múltiplas amostras intermediárias.
+O processo é repetido várias vezes por amostra original — cada sorteio independente de *k* e de quais peças remover produz uma amostra `Tem jogo` distinta. A Figura 5 mostra quatro saídas válidas obtidas a partir do mesmo endgame, evidenciando como uma única configuração final pode se desdobrar em múltiplas amostras intermediárias.
 
 ![Diversidade de saídas válidas a partir do mesmo endgame](docs/images/fig_temjogo_diversidade.svg)
 
-*Figura 2 — Quatro estados intermediários distintos e válidos derivados do mesmo endgame de origem. Cada um passou nas duas validações e foi rotulado como `Tem jogo`. A combinação de k variável (1 a 3) com sorteio aleatório das posições garante a diversidade do conjunto gerado.*
+*Figura 5 — Quatro estados intermediários distintos e válidos derivados do mesmo endgame de origem. Cada um passou nas duas validações e foi rotulado como `Tem jogo`. A combinação de k variável (1 a 3) com sorteio aleatório das posições garante a diversidade do conjunto gerado.*
 
 No final, a classe é truncada de modo a igualar o tamanho da maior classe existente (626, mesma cardinalidade de `X venceu`), evitando que `Tem jogo` domine o dataset por excesso de amostras geradas.
 
@@ -136,9 +160,22 @@ Os hiperparâmetros adotados foram `criterion='gini'`, `min_samples_leaf=2` e `m
 
 ### 4.3 Multi-Layer Perceptron (MLP)
 
-A MLP é uma rede neural feed-forward com camadas totalmente conectadas. A arquitetura adotada tem duas camadas ocultas de **64 e 32 neurônios** com ativação ReLU, otimizador Adam, máximo de 1.000 iterações e `random_state=42`. A escolha por uma topologia decrescente (64 → 32) é uma heurística clássica de afunilamento que força a rede a comprimir gradualmente a representação à medida que se aproxima da camada de saída.
+A MLP é uma rede neural feed-forward com camadas totalmente conectadas. Ao contrário dos modelos baseados em árvores, a MLP aprende fronteiras de decisão suaves no espaço contínuo das features e é particularmente sensível à escala das entradas — algo já contemplado pela codificação simétrica (−1, 0, +1), que dispensa normalização adicional.
 
-A escala simétrica das features (−1, 0, +1) é favorável a redes com ativação ReLU, e por isso não foi aplicada normalização adicional.
+O ajuste de hiperparâmetros foi feito via `RandomizedSearchCV` com `n_iter=20`, `cv=5` e `scoring='accuracy'`, varrendo simultaneamente arquitetura, função de ativação, otimizador, regularização L2, taxa de aprendizado e tamanho de batch:
+
+```
+hidden_layer_sizes ∈ {(32,), (64,), (128,), (64,32), (128,64), (128,64,32), (256,128,64)}
+activation         ∈ {'relu', 'tanh', 'logistic'}
+solver             ∈ {'adam', 'sgd'}
+alpha              ∈ {1e-5, 1e-4, 1e-3, 1e-2, 1e-1}
+learning_rate_init ∈ {1e-4, 1e-3, 1e-2, 1e-1}
+learning_rate      ∈ {'constant', 'adaptive'}
+max_iter           ∈ {1000, 1500, 2000, 2500}
+batch_size         ∈ {'auto', 32, 64, 128}
+```
+
+A melhor configuração encontrada foi `hidden_layer_sizes=(256, 128, 64)`, `activation='relu'`, `solver='sgd'`, `alpha=0.01`, `learning_rate='adaptive'`, `learning_rate_init=0.1`, `batch_size=32`, `max_iter=1000`. A topologia decrescente (256 → 128 → 64) força um afunilamento gradual da representação até a camada de saída, e o `learning_rate='adaptive'` reduz automaticamente a taxa de aprendizado quando o treino estagna, permitindo um learning rate inicial agressivo (0.1) sem comprometer a convergência.
 
 ### 4.4 Random Forest
 
@@ -181,6 +218,31 @@ A configuração inicial adotada foi `n_estimators=200`, `learning_rate=0.1`, `m
 
 Após algumas iterações, foram encontrados valores ideais de `n_estimators=15` e `learning_rate=1`, que entregam melhor ganho de acuracia por iteração e maior acurácia máxima. 
 
+### 4.7 MLP com Feature Derivada (`tabuleiro_completo`) — Estudo Exploratório
+
+Durante a análise de erros da MLP, ficou evidente que a confusão residual do modelo se concentrava no par `Tem jogo` × `Empate`. Uma inspeção da matriz de confusão e das amostras mal classificadas levou à seguinte observação geométrica sobre o problema:
+
+| Classe | Existe linha/coluna/diagonal somando ±3? | Tabuleiro completo (9 casas preenchidas)? |
+|---|---|---|
+| X venceu | Sim (+3) | Indiferente |
+| O venceu | Sim (−3) | Indiferente |
+| Tem jogo | Não | **Não** (sempre há ao menos uma casa vazia) |
+| Empate | Não | **Sim** (sempre cheio) |
+
+`Tem jogo` e `Empate` são *indistinguíveis* pelo critério das somas vencedoras — em ambos não existe linha somando ±3. O único atributo que as separa é a completude do tabuleiro. Em princípio, uma MLP com 9 entradas binárias-ternárias deveria conseguir aprender a contagem de zeros e derivar essa distinção sozinha; na prática, com apenas 22 amostras de `Empate` no treino contra 438 de `Tem jogo`, a função de custo é dominada pela classe majoritária e a fronteira não é aprendida.
+
+A intervenção foi adicionar uma única feature derivada, totalmente determinística a partir das nove posições:
+
+```python
+df['tabuleiro_completo'] = (
+    (df[pos_cols] == -1).sum(axis=1) + (df[pos_cols] == 1).sum(axis=1) == 9
+).astype(int)
+```
+
+Com a entrada estendida para 10 features e a *mesma* busca de hiperparâmetros do MLP base, o modelo converge para a mesma arquitetura `(256, 128, 64)` mas com a fronteira `Tem jogo` × `Empate` agora trivialmente linear sobre a nova dimensão. O resultado, reportado na Seção 5, é uma MLP que praticamente zera os erros nas quatro classes.
+
+**Nota sobre validade.** A feature `tabuleiro_completo` é uma transformação determinística das nove entradas originais — não introduz informação externa nem rótulo disfarçado, apenas pré-computa uma combinação não-linear que a rede teria de aprender por si só. Trata-se de feature engineering legítima sob qualquer manual clássico de ML. Ainda assim, este modelo é apresentado aqui como **estudo exploratório** e não substitui o XGBoost como campeão oficial: a comparação entre os seis algoritmos da Seção 5 é feita estritamente sobre as nove features brutas para preservar uma base de comparação uniforme. O MLP_Extra_Feature serve, portanto, como demonstração de que o teto de desempenho neste problema está limitado pela representação, não pelo classificador.
+
 ---
 
 ## 5. Resultados
@@ -193,10 +255,11 @@ Todos os modelos foram avaliados sobre o mesmo conjunto de teste de 240 amostras
 |---|---:|---:|---:|
 | k-NN (k=6) | 0,8208 | 0,6173 | 0,8097 |
 | Árvore de Decisão | 0,7833 | 0,6615 | 0,7892 |
-| MLP (64, 32) | 0,9167 | 0,6981 | 0,9080 |
+| MLP (256, 128, 64) | 0,9792 | 0,8810 | 0,9766 |
 | Random Forest | 0,9292 | 0,9095 | 0,9279 |
 | SVM (RBF, C=100) | 0,9750 | 0,8770 | 0,9758 |
 | **XGBoost** | **0,9917** | **0,9349** | **0,9907** |
+| MLP + `tabuleiro_completo` *(estudo exploratório)* | 0,9917 | 0,9934 | 0,9917 |
 
 ### 5.2 F1 por Classe (Conjunto de Teste)
 
@@ -204,20 +267,33 @@ Todos os modelos foram avaliados sobre o mesmo conjunto de teste de 240 amostras
 |---|---:|---:|---:|---:|
 | k-NN | 0,000 | 0,804 | 0,743 | 0,923 |
 | Árvore de Decisão | 0,308 | 0,680 | 0,773 | 0,885 |
-| MLP | 0,000 | 0,948 | 0,890 | 0,954 |
+| MLP | 0,571 | 0,979 | 0,974 | 1,000 |
 | Random Forest | 0,833 | 0,959 | 0,901 | 0,945 |
 | SVM | 0,545 | 1,000 | 0,968 | 0,995 |
 | XGBoost | 0,750 | 1,000 | 0,989 | 1,000 |
+| MLP + `tabuleiro_completo` | 1,000 | 0,989 | 0,989 | 0,995 |
 
 ### 5.3 Discussão
 
-A leitura conjunta das duas tabelas revela três regimes de comportamento. Os modelos mais simples — k-NN e Árvore de Decisão — atingem acurácias razoáveis (78–82 %) mas falham completamente na classe `Empate`: o k-NN registra F1 = 0 porque os 5 exemplos de empate no teste sempre têm vizinhos majoritários de outras classes; a árvore consegue um F1 modesto de 0,308 graças à capacidade de criar regiões pequenas e específicas, mas ainda assim erra a maioria. A MLP eleva a acurácia para 91,7 % mas, paradoxalmente, regride na classe minoritária (F1 = 0): a função de custo padrão da MLP é dominada pelas classes majoritárias e não há mecanismo automático para compensar.
+A leitura conjunta das duas tabelas revela três regimes de comportamento. Os modelos mais simples — k-NN e Árvore de Decisão — atingem acurácias razoáveis (78–82 %) mas falham na classe `Empate`: o k-NN registra F1 = 0 porque os cinco exemplos de empate no teste sempre têm vizinhos majoritários de outras classes; a árvore consegue um F1 modesto de 0,308 graças à capacidade de criar regiões pequenas e específicas, mas ainda assim erra a maioria.
 
-Os três modelos do regime intermediário a alto — Random Forest, SVM e XGBoost — operam acima de 92 %. Random Forest se destaca como o **melhor classificador da classe minoritária** (F1 = 0,833 em `Empate`), graças ao `class_weight='balanced'`, ainda que sua acurácia global (92,9 %) seja menor que a do SVM e do XGBoost. Esse é um trade-off explícito: ao priorizar a classe rara durante o treino, o RF aceita um pequeno sacrifício nas classes majoritárias.
+A MLP, após o tuning randomizado descrito na Seção 4.3, eleva a acurácia para 97,9 % e atinge F1 = 0,571 em `Empate` — um desempenho honesto, mas ainda limitado pela amostragem reduzida da classe. A inspeção da matriz de confusão mostra que os erros remanescentes da MLP se concentram quase integralmente no eixo `Tem jogo` ↔ `Empate`, fenômeno discutido na Seção 4.7.
 
-O XGBoost combina a melhor acurácia global (99,17 %) com um F1 sólido em `Empate` (0,750) e desempenho próximo do perfeito nas demais classes. O SVM o segue de perto em acurácia (97,5 %) mas erra mais em `Empate` (F1 = 0,545), o que derruba seu F1-macro para 0,877.
+Os modelos baseados em árvore (Random Forest e XGBoost) e o SVM operam acima de 92 %. Random Forest se destaca como o **melhor classificador da classe minoritária entre os modelos de 9 features** (F1 = 0,833 em `Empate`), graças ao `class_weight='balanced'`, ainda que sua acurácia global (92,9 %) seja menor. Esse é um trade-off explícito: ao priorizar a classe rara durante o treino, o RF aceita um pequeno sacrifício nas classes majoritárias.
 
-Como métrica de desempate, o **F1-macro** é a leitura mais honesta para este problema, pois trata as quatro classes com peso igual independentemente da frequência. Por essa métrica, **XGBoost (0,935) > Random Forest (0,910) > SVM (0,877)**. A escolha do modelo "campeão" depende da prioridade: se o objetivo é minimizar erros agregados, XGBoost; se a prioridade é a classe rara, Random Forest. Para o uso prático no app, o XGBoost foi adotado como referência.
+O **XGBoost combina a melhor acurácia global (99,17 %) com um F1 sólido em `Empate` (0,750)** e desempenho próximo do perfeito nas demais classes, sendo o **modelo campeão oficial deste trabalho** sob a base de comparação justa de 9 features. O SVM o segue de perto em acurácia (97,5 %) mas erra mais em `Empate` (F1 = 0,545), o que derruba seu F1-macro para 0,877.
+
+Como métrica de desempate, o **F1-macro** é a leitura mais honesta para este problema, pois trata as quatro classes com peso igual independentemente da frequência. Por essa métrica, entre os modelos de 9 features, **XGBoost (0,935) > Random Forest (0,910) > MLP (0,881) > SVM (0,877)**. A escolha do modelo "campeão" depende da prioridade: se o objetivo é minimizar erros agregados, XGBoost; se a prioridade é a classe rara, Random Forest. Para o uso prático no app, o XGBoost foi adotado como referência.
+
+### 5.4 Discussão Específica do Estudo Exploratório (MLP + `tabuleiro_completo`)
+
+O resultado da MLP enriquecida pela feature `tabuleiro_completo` (Seção 4.7) merece análise separada porque expõe um insight estrutural sobre o problema. Com a feature adicional, o modelo atinge **99,17 % de acurácia e F1-macro = 0,993**, errando apenas duas amostras em 240 no conjunto de teste — empata com o XGBoost em acurácia global e o supera por larga margem em F1-macro (0,993 vs 0,935).
+
+A diferença entre os dois reside justamente no comportamento sobre a classe minoritária: enquanto o XGBoost ainda confunde 1 dos 5 empates (F1-Empate = 0,750), o MLP_Extra_Feature classifica corretamente os cinco empates do conjunto de teste (F1-Empate = 1,000), refletindo o efeito da nova dimensão sobre o eixo de decisão `Tem jogo` × `Empate`.
+
+Mais importante que a métrica é o que ela revela: a fronteira entre `Tem jogo` e `Empate` deixa de ser um problema estatístico (amostras insuficientes da classe rara) para se tornar uma classificação trivialmente linear sobre a nova dimensão. A confusão remanescente da MLP base — e parte da confusão dos demais modelos — não vinha de limitação dos algoritmos, mas da **representação subespecificada** das entradas. O fato de essa única feature determinística ser suficiente para equiparar o desempenho ao melhor modelo do trabalho mostra que o teto deste problema, na prática, está no espaço de features, não no classificador.
+
+Uma vez que o objetivo do trabalho é comparar algoritmos sobre uma base de features uniforme (as nove posições do tabuleiro), o MLP_Extra_Feature **não é declarado vencedor da comparação principal** — ele é reportado como evidência de que a engenharia de features bem direcionada pode equiparar ou superar a sofisticação do classificador.
 
 Vale notar que os desempenhos se alinham com a literatura clássica do dataset, em que algoritmos sofisticados (CN2, IB3-CI nos experimentos de Aha, 1991) atingiam acurácias acima de 98 %. A diferença é que aqui o problema é de quatro classes em vez de duas, e mesmo assim o XGBoost mantém o patamar.
 
@@ -274,6 +350,7 @@ Cada notebook em `notebooks/MODELING/` é independente e produz um par `(modelo.
 
 ```bash
 jupyter notebook notebooks/MODELING/01_MLP.ipynb
+jupyter notebook notebooks/MODELING/01_MLP_Extra_Feature.ipynb   # estudo exploratório (10 features)
 jupyter notebook notebooks/MODELING/04_random_forest.ipynb
 jupyter notebook notebooks/MODELING/05_k-NN.ipynb
 jupyter notebook notebooks/MODELING/06_ArvDecis.ipynb
@@ -301,6 +378,9 @@ Tic-Tac-Toe-ML/
 ├── app/
 │   ├── README.md                          # Documentação detalhada do app
 │   └── main.py                            # Aplicação Streamlit
+├── docs/
+│   ├── images/                            # Figuras estáticas (SVG) do pipeline de dados
+│   └── visualizations/                    # Projeções 3D/2D das classes (PNG + HTML interativo)
 ├── data/
 │   ├── raw/
 │   │   ├── tic-tac-toe.data               # Dataset UCI original
@@ -326,6 +406,7 @@ Tic-Tac-Toe-ML/
 │   │   └── README.MD
 │   └── MODELING/
 │       ├── 01_MLP.ipynb
+│       ├── 01_MLP_Extra_Feature.ipynb     # MLP + feature `tabuleiro_completo`
 │       ├── 04_random_forest.ipynb
 │       ├── 05_k-NN.ipynb
 │       ├── 06_ArvDecis.ipynb
@@ -333,6 +414,7 @@ Tic-Tac-Toe-ML/
 │       └── 08_Gradient.ipynb
 └── models/
     ├── MLP/
+    ├── MLP_Extra_Feature/                 # estudo exploratório
     ├── RandomForest/
     ├── KNN/
     ├── DecisionTree/
